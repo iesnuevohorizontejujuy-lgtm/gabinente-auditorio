@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+
+    --color-campus-50: #eff6ff;
+    --color-campus-100: #dbeafe;
+    --color-campus-200: #bfdbfe;
+    --color-campus-300: #93c5fd;
+    --color-campus-400: #60a5fa;
+    --color-campus-500: #3b82f6;
+    --color-campus-600: #2563eb;
+    --color-campus-700: #1d4ed8;
+    --color-campus-800: #1e3a8a;
+    --color-campus-900: #172554;
+
+    --color-zinc-50: #f8fafc;
+    --color-zinc-100: #f1f5f9;
+    --color-zinc-200: #e2e8f0;
+    --color-zinc-300: #cbd5e1;
+    --color-zinc-400: #94a3b8;
+    --color-zinc-500: #64748b;
+    --color-zinc-600: #475569;
+    --color-zinc-700: #334155;
+    --color-zinc-800: #1e293b;
+    --color-zinc-900: #0f172a;
+    --color-zinc-950: #020617;
+}
+
+
+@layer theme {
+    :root {
+        --color-accent: var(--color-campus-800);
+        --color-accent-content: var(--color-campus-800);
+        --color-accent-foreground: var(--color-white);
+    }
+
+    .dark {
+        --color-accent: var(--color-campus-500);
+        --color-accent-content: var(--color-campus-400);
+        --color-accent-foreground: var(--color-white);
+    }
+}
+
+@layer base {
+
+    body {
+        @apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+    }
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer components {
+    .app-page {
+        @apply mx-auto flex w-full max-w-7xl flex-col gap-6;
+    }
+
+    .app-eyebrow {
+        @apply text-xs font-semibold tracking-widest text-campus-700 uppercase dark:text-campus-300;
+    }
+
+    .app-panel {
+        @apply border border-zinc-200 bg-white shadow-sm dark:border-zinc-700 dark:bg-zinc-900;
+    }
+
+    .app-metric {
+        @apply text-3xl font-bold tracking-tight text-campus-900 tabular-nums dark:text-campus-100;
+    }
+
+    .app-table-shell {
+        @apply overflow-hidden border border-zinc-200 bg-white shadow-sm dark:border-zinc-700 dark:bg-zinc-900;
+    }
+
+    .app-date {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+.reservation-calendar {
+    --fc-border-color: var(--color-zinc-200);
+    --fc-button-bg-color: var(--color-zinc-800);
+    --fc-button-border-color: var(--color-zinc-800);
+    --fc-button-hover-bg-color: var(--color-zinc-700);
+    --fc-button-hover-border-color: var(--color-zinc-700);
+    --fc-button-active-bg-color: var(--color-zinc-950);
+    --fc-button-active-border-color: var(--color-zinc-950);
+    --fc-neutral-bg-color: var(--color-zinc-50);
+    --fc-page-bg-color: transparent;
+    --fc-today-bg-color: color-mix(in oklab, var(--color-blue-500) 12%, transparent);
+}
+
+.dark .reservation-calendar {
+    --fc-border-color: var(--color-zinc-700);
+    --fc-button-bg-color: var(--color-zinc-100);
+    --fc-button-border-color: var(--color-zinc-100);
+    --fc-button-text-color: var(--color-zinc-900);
+    --fc-button-hover-bg-color: var(--color-white);
+    --fc-button-hover-border-color: var(--color-white);
+    --fc-button-active-bg-color: var(--color-zinc-300);
+    --fc-button-active-border-color: var(--color-zinc-300);
+    --fc-neutral-bg-color: var(--color-zinc-900);
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */

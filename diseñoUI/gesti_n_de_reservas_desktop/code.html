@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "secondary": "#0051d5", "secondary-container": "#316bf3", "on-primary-container": "#90a8ff", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#b4c5ff", "surface-variant": "#d3e4fe", "on-primary-fixed": "#00164e", "surface-tint": "#4059aa", "on-tertiary-fixed": "#001e2c", "inverse-surface": "#213145", "on-error-container": "#93000a", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#7bd0ff", "primary-fixed": "#dce1ff", "on-secondary-fixed-variant": "#003ea8", "surface-container-low": "#eff4ff", "inverse-on-surface": "#eaf1ff", "tertiary": "#002e41", "surface": "#f8f9ff", "error": "#ba1a1a", "on-secondary-container": "#fefcff", "background": "#f8f9ff", "primary-container": "#1e3a8a", "surface-bright": "#f8f9ff", "secondary-fixed": "#dbe1ff", "on-background": "#0b1c30", "primary-fixed-dim": "#b6c4ff", "on-surface-variant": "#444651", "on-surface": "#0b1c30", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#004c69", "on-primary-fixed-variant": "#264191", "tertiary-fixed": "#c4e7ff", "on-tertiary": "#ffffff", "outline-variant": "#c5c5d3", "surface-dim": "#cbdbf5", "tertiary-container": "#00455f", "error-container": "#ffdad6", "surface-container-high": "#dce9ff", "on-tertiary-container": "#2eb7f2", "outline": "#757682", "inverse-primary": "#b6c4ff", "primary": "#00236f", "on-primary": "#ffffff", "on-secondary-fixed": "#00174b" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-2xl": "3rem", "container-max": "80rem", "gutter-mobile": "1rem", "space-xs": "0.5rem", "space-sm": "0.75rem", "space-md": "1rem", "space-2xs": "0.25rem", "space-lg": "1.5rem", "gutter-desktop": "1.5rem", "space-xl": "2rem" }, fontFamily: { "headline-sm": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"], "headline-lg-mobile": ["Inter"], "label-sm": ["Inter"], "display-lg": ["Inter"], "code-mono": ["Inter"], "label-lg": ["Inter"], "body-sm": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"] }, fontSize: { "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-md": ["1.25rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }], "headline-lg-mobile": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }], "label-sm": ["0.6875rem", { lineHeight: "1rem", letterSpacing: "0.025em", fontWeight: "600" }], "display-lg": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.025em", fontWeight: "700" }], "code-mono": ["0.8125rem", { lineHeight: "1.25rem", fontWeight: "500" }], "label-lg": ["0.875rem", { lineHeight: "1.25rem", fontWeight: "600" }], "body-sm": ["0.75rem", { lineHeight: "1.125rem", fontWeight: "400" }], "body-lg": ["1rem", { lineHeight: "1.5rem", fontWeight: "400" }], "body-md": ["0.875rem", { lineHeight: "1.375rem", fontWeight: "400" }], "label-md": ["0.8125rem", { lineHeight: "1.125rem", fontWeight: "500" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Logo de ReservaCampus - Institucional" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V42iwdZXLbPpFV9UuKDeBoFFH3oJ-7SrYr_RQiB6a3M2Fi9-ltKpt-sWvw6Za_Q2daVGZOSwMZqWgYnJB8qHBVKzj04cg4XDdjwEWY2GaJnW5k6j6uben9CR2xzdnE_MSMHbwyEzyHy9CN-H7ONa0n4j9Vuut_4wZDt6e6IRwGafV8KNm0sSGBTJH_ZcdElZtwUOE9869HIvTdDadocN1wQrxy69KqOOZjS9zq5DqkMprRfi5sSdN12xY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">ReservaCampus</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Gestión Universitaria</span></div></div><div class="px-space-md py-space-sm"><p class="px-space-sm pb-space-2xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Navegación</p><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl shadow-sm"><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="inicio-dashboard" href="#">Inicio (Dashboard)</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="calendario-de-espacios" href="#">Calendario de Espacios</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="gestion-de-reservas" href="#">Gestión de Reservas</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="revision-de-solicitudes" href="#">Revisión de Solicitudes</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="mis-reservas" href="#">Mis Reservas</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="espacios-institucionales" href="#">Espacios Institucionales</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="usuarios" href="#">Usuarios</a><a class="px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="configuracion" href="#">Configuración</a></nav></div></div><div class="p-space-md bg-surface-container-low/60"><div class="flex items-center gap-space-sm mb-space-sm"><div class="relative flex-shrink-0"><img alt="Avatar Dra. Elena Morales" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1USAhjbBJ0JhIl30V2QhIOiG7A3SD9pSc7MYt6rgU5AXt3EIu2bFnUDlJQFr5aTpPoWOyP7wr3f1ME9A5ViZ7FfyYoZXtgX8xordVCs9qrMEYRtU7UsiA6VQe6jaZuBjxR19V1Qrk93mSlAzYOycbdEiGGrmRz1BN6cU4aGrvEQguvrLZN2YcwM3oTyfYiPf4Yy296DtyfoEybfNyffK_X5JG5M5X2g34CJxqWB5XQGLzMpb4pobkT2pQ"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Dra. Elena Morales</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Administrador Rectoría</span></div></div><a class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-xl font-label-md text-label-md text-error hover:bg-error-container/40 transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Cerrar Sesión</span></a></div></aside><div class="pl-64 min-h-screen flex flex-col"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[20px]">domain</span><span class="hover:text-on-surface cursor-pointer">Universidad Central</span><span class="material-symbols-outlined text-[16px]">chevron_right</span><div class="flex items-center gap-space-2xs bg-surface-container-low px-space-sm py-space-2xs rounded-lg font-label-md text-label-md text-on-surface"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span>Campus Central</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-2xs font-label-md text-label-md text-on-surface-variant bg-surface-container-low/80 px-space-sm py-space-2xs rounded-lg"><span class="material-symbols-outlined text-[18px]">today</span><span>Lunes, 24 Octubre 2024</span></div><div class="relative flex items-center"><button aria-label="Notificaciones" class="p-space-2xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Avatar Dra. Elena Morales" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1USAhjbBJ0JhIl30V2QhIOiG7A3SD9pSc7MYt6rgU5AXt3EIu2bFnUDlJQFr5aTpPoWOyP7wr3f1ME9A5ViZ7FfyYoZXtgX8xordVCs9qrMEYRtU7UsiA6VQe6jaZuBjxR19V1Qrk93mSlAzYOycbdEiGGrmRz1BN6cU4aGrvEQguvrLZN2YcwM3oTyfYiPf4Yy296DtyfoEybfNyffK_X5JG5M5X2g34CJxqWB5XQGLzMpb4pobkT2pQ"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight font-semibold">Dra. Morales</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-none">Rectoría</span></div></div></div></header><main class="flex-1 pt-16 bg-background w-full"><div class="flex flex-col w-full">
+<div class="w-full max-w-[88rem] mx-auto px-space-md lg:px-space-xl py-space-lg flex flex-col gap-space-lg">
+<!-- Header Section -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>Rectoría · Módulo de Control de Infraestructura</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Gestión Integral de Reservas Institucionales
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Supervisión centralizada, filtrado avanzado y auditoría de solicitudes de espacios académicos del Campus Central.
+        </p>
+</div>
+<!-- Header CTAs -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-space-xs h-10 px-space-md rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">sync</span>
+<span>Sincronizar calendario rectoral</span>
+</button>
+<button class="inline-flex items-center gap-space-xs h-10 px-space-md rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+<span>Descargar reporte (CSV/PDF)</span>
+</button>
+<button class="inline-flex items-center gap-space-xs h-10 px-space-md rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:bg-primary-container transition-all active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Nueva reserva directa</span>
+</button>
+</div>
+</div>
+<!-- Quick Metrics & Tabs Strip -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-xs rounded-xl shadow-sm">
+<div class="flex items-center overflow-x-auto gap-space-2xs">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-primary-container text-on-primary-container font-label-md text-label-md transition-all" type="button">
+<span>Todas</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm font-bold">48</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Pendientes de revisión</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-sm text-label-sm font-bold">4</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Aprobadas</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">36</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-rose-500"></span>
+<span>Rechazadas</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">5</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-xl text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span>Canceladas / Historial</span>
+<span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">3</span>
+</button>
+</div>
+<div class="hidden xl:flex items-center gap-space-sm pr-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">info</span>
+<span>Última actualización: hace 3 min (Automática)</span>
+</div>
+</div>
+<!-- Filter & Search Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-sm">
+<!-- Search Input -->
+<div class="lg:col-span-4 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Buscar por docente, código #RES, motivo o aula..." type="text"/>
+</div>
+<!-- Academic Space Selector -->
+<div class="lg:col-span-2 relative flex items-center">
+<select class="w-full h-10 px-3 pr-8 bg-surface-container-low text-on-surface rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest transition-colors">
+<option value="">Espacio: Todos</option>
+<option value="gabinete">Gabinete de Informática</option>
+<option value="auditorio">Auditorio Institucional</option>
+<option value="streaming">Sala de Streaming</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Approval Status Selector -->
+<div class="lg:col-span-2 relative flex items-center">
+<select class="w-full h-10 px-3 pr-8 bg-surface-container-low text-on-surface rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest transition-colors">
+<option value="">Estado: Todos</option>
+<option value="pendiente">● Pendiente (Revisión)</option>
+<option value="aprobada">● Aprobada</option>
+<option value="rechazada">● Rechazada</option>
+<option value="cancelada">● Cancelada</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Teacher / Requester Selector -->
+<div class="lg:col-span-2 relative flex items-center">
+<select class="w-full h-10 px-3 pr-8 bg-surface-container-low text-on-surface rounded-xl font-label-md text-label-md appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest transition-colors">
+<option value="">Docente: Todos</option>
+<option value="carlos_m">Prof. Carlos Mendoza</option>
+<option value="elena_m">Dra. Elena Morales</option>
+<option value="roberto_s">Prof. Roberto Silva</option>
+<option value="carlos_r">Prof. Carlos Ramos</option>
+<option value="marcos_l">Prof. Marcos Luna</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Date Range Filter -->
+<div class="lg:col-span-2 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px] pointer-events-none">date_range</span>
+<input class="w-full h-10 pl-9 pr-3 bg-surface-container-low text-on-surface rounded-xl font-code-mono text-code-mono cursor-pointer focus:outline-none" readonly="" type="text" value="10/05/2025 al 25/05/2025"/>
+</div>
+</div>
+<!-- Action Row & Counters -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="font-semibold text-primary">Mostrando 48 reservas registradas</span>
+<span class="text-on-surface-variant">• 4 requieren acción inmediata</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            Limpiar filtros
+          </button>
+<button class="inline-flex items-center gap-space-2xs px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm hover:bg-secondary-container transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_alt</span>
+<span>Aplicar filtros</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bulk Action Strip (Hidden by default or subtle banner) -->
+<div class="flex items-center justify-between px-space-md py-space-xs rounded-xl bg-surface-container-high text-on-surface font-body-sm text-body-sm transition-all" id="bulk-banner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_box</span>
+<span class="font-label-md text-label-md"><strong class="text-primary font-bold">2</strong> reservas seleccionadas</span>
+<span class="text-on-surface-variant hidden md:inline">— Aplica resoluciones masivas a la selección activa</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-space-2xs px-space-sm py-1 rounded-lg bg-emerald-700 text-white font-label-sm text-label-sm hover:bg-emerald-800 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">done_all</span>
+<span>Aprobar seleccionadas</span>
+</button>
+<button class="inline-flex items-center gap-space-2xs px-space-sm py-1 rounded-lg bg-rose-700 text-white font-label-sm text-label-sm hover:bg-rose-800 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+<span>Rechazar</span>
+</button>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md w-12 text-center">
+<input aria-label="Seleccionar todo" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</th>
+<th class="py-space-sm px-space-md font-semibold">Código</th>
+<th class="py-space-sm px-space-md font-semibold">Responsable / Solicitante</th>
+<th class="py-space-sm px-space-md font-semibold">Espacio Institucional</th>
+<th class="py-space-sm px-space-md font-semibold">Fecha y Horario</th>
+<th class="py-space-sm px-space-md font-semibold">Motivo y Asistentes</th>
+<th class="py-space-sm px-space-md font-semibold">Fecha Solicitud</th>
+<th class="py-space-sm px-space-md font-semibold">Estado</th>
+<th class="py-space-sm px-space-md font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- ROW 1: RES-2025-084 (Pendiente) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-084" checked="" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-primary bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-084</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0" data-alt="Retrato profesional de profesor universitario con anteojos sonriendo con camisa formal azul y fondo de aulas de cómputo en estilo fotográfico suave y tonos corporativos" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyRUafFXHKo0k5qhBtgkIM9RahfaFey68B0MUyMQSDC3ISeHSQsEG8Sf_koAUwaZ1JG0maUFdqtQ3KF79nQvyPNWp_dj9vkhBuhSKd1aLvooU5Ctz3usfBN5ATU9VIYgqJrEWiXr1vf81DxI1wwcLUsPebsRV2OtmL0S-KGGKztsfUhWA0dU1o6IaY0QoWmoIMgNPVywWlzqwqDJIifJIglD7PCFk3sUqEW9ZAWkecAYy9BeWautf9"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Prof. Carlos Mendoza</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Informática & Redes</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">computer</span>
+<span class="font-medium text-on-surface">Gabinete de Informática</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Edificio de Ciencias • Lab 2B</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono">
+<span class="font-semibold text-on-surface">16/05/2025</span>
+<span class="text-secondary font-medium">14:00 - 16:30</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface line-clamp-1">Examen de Redes</span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span> 32 estudiantes
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                13/05/2025 18:22
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-amber-600">schedule</span>
+                  Pendiente
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" title="Revisar Solicitud" type="button">
+                    Revisar
+                  </button>
+<button class="p-1 rounded-lg text-emerald-700 hover:bg-emerald-50 transition-colors" title="Aprobar" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="p-1 rounded-lg text-rose-700 hover:bg-rose-50 transition-colors" title="Rechazar" type="button">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: RES-2025-081 (Pendiente) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-081" checked="" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-primary bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-081</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0" data-alt="Fotografía de retrato de investigadora académica senior con blazer gris formal en oficina universitaria luminosa con estantes de libros y luz matutina profesional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjXD3JSs4ddTgZMvBs6tsXx8rMj0sy7V7Mp6dPhKv_4Sg5saw6lqoycCBv-tO3tPjFRqNRxTU5ox35ztzFN-iyP9TYRydj0YKD5i0zSDfeoDcs3E3J9mgjrL1oD7GgOw_HYVEqLLwTDym029ZZJ8Kit0jdN7LMBwpYWRdZNGRVLzcRHPhfla8RPCQ3swlLKV8KI1zzz3DGVZKtd6jWjPaM0vFaKGOFxaikh-1rFfqmVNpdgjqkW_rV"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Dra. Elena Morales</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Postgrados & Inv.</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">videocam</span>
+<span class="font-medium text-on-surface">Sala de Streaming</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Centro de Medios • Set 1</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono">
+<span class="font-semibold text-on-surface">16/05/2025</span>
+<span class="text-secondary font-medium">14:00 - 16:30</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface line-clamp-1">Masterclass IA Generativa</span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span> 10 personas
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                12/05/2025 10:15
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-amber-600">schedule</span>
+                  Pendiente
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" title="Revisar Solicitud" type="button">
+                    Revisar
+                  </button>
+<button class="p-1 rounded-lg text-emerald-700 hover:bg-emerald-50 transition-colors" title="Aprobar" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="p-1 rounded-lg text-rose-700 hover:bg-rose-50 transition-colors" title="Rechazar" type="button">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: RES-2025-079 (Aprobada) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-079" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-primary bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-079</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0" data-alt="Profesor universitario maduro con barba corta y vestimenta académica semiformal en el campus universitario con luz natural difusa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH45tnq8cOZ3ey8WkHstr1j-gcTH97sln10vlWmHg7qncKi28eWEc34ssiWI5Ar_1k1iVDdzr-4Sxzd-ZQ0UdZGZi61iKEmUxoAwXjWPL2-tNL3DzBwPaFiuUEctJ62Seck1yF8sjpA-ggR_Wl-5rk8D1gUB-fVD_HD_7bC69tJoKVx8v1K00TvAf6KhkorjLngZWXSQbk6vIiOtiG3qTbGa1ORktFerlruuJAjysnZAPAMWy3yBM3"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Prof. Roberto Silva</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Innovación Educativa</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">theater_comedy</span>
+<span class="font-medium text-on-surface">Auditorio Institucional</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Rectoría • Capacidad 250</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono">
+<span class="font-semibold text-on-surface">14/05/2025</span>
+<span class="text-secondary font-medium">11:30 - 13:30</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface line-clamp-1">Conferencia Apertura Semestre</span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span> 120 asistentes
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                08/05/2025 09:00
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-900 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check_circle</span>
+                  Aprobada
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" type="button">
+                    Ver detalle
+                  </button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Modificar horario" type="button">
+<span class="material-symbols-outlined text-[20px]">edit_calendar</span>
+</button>
+<button class="p-1 rounded-lg text-error hover:bg-error-container/30 transition-colors" title="Cancelar reserva" type="button">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: RES-2025-075 (Aprobada) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-075" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-primary bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-075</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0" data-alt="Docente joven de ingeniería con anteojos modernos y sweater formal azul marino en pasillo universitario con iluminación técnica clara" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5rqHc-nYZssD7udoD2o08S2nJ-sbPPg10egSLeP5O_by5RM6dCpC2pDeBW3kszqha4I2641pML0sRruelIhAQBNI5Y4OsCOOvQ2SHXC-KWmnRhS4dex4cxDvT_N6IxsU96GEMsaTeHJiqtHE7WVEceSAyNaXBb26uuB4LKr8gf0FaAalr0peleo-WrWHx2wjnJttinKYDM8cisdbh5zHVdz4JtPcHnw9TvJg9IjOTVKlv68b2qJ3H"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Prof. Carlos Ramos</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Fotogrametría</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">computer</span>
+<span class="font-medium text-on-surface">Gabinete de Informática</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Edificio de Ciencias • Lab 2A</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono">
+<span class="font-semibold text-on-surface">15/05/2025</span>
+<span class="text-secondary font-medium">08:30 - 10:30</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface line-clamp-1">Práctica Cátedra Sistemas</span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span> 30 personas
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                05/05/2025 11:40
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-900 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check_circle</span>
+                  Aprobada
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" type="button">
+                    Ver detalle
+                  </button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Modificar horario" type="button">
+<span class="material-symbols-outlined text-[20px]">edit_calendar</span>
+</button>
+<button class="p-1 rounded-lg text-error hover:bg-error-container/30 transition-colors" title="Cancelar reserva" type="button">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: RES-2025-068 (Rechazada) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-068" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-primary bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-068</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0" data-alt="Docente universitario en entorno académico con traje sobrio y sonrisa contenida con fondo neutro en paleta azul y gris institucional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCCg21lanMOb10fRF5KvQrjuq3TS_zAWgPXOrYaRtZMbWWznzRMoJ0cyFKKpLxk_ZyzphLjWTp8MImbLPQ0lSTYdjVyhD1L4MEoN6IU0Zl-GnMYyNcenffRH4VVkgVINFG56OWceQs49BvwMi88-pX_11z3WTO9MfhKNacyw4hf8GeGocPi7aUkGrIUAS26HygB3qhb6kupf4C5Hrt0CZgLxAJ3f_78dz0goiTFdKaI0vViI2m2pRn"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Prof. Marcos Luna</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Educación Continua</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary">videocam</span>
+<span class="font-medium text-on-surface">Sala de Streaming</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Centro de Medios • Set 2</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono text-on-surface-variant">
+<span>12/05/2025</span>
+<span>09:00 - 11:00</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface line-clamp-1">Grabación Cápsulas e-Learning</span>
+<span class="text-error font-body-sm text-body-sm truncate max-w-xs" title="Motivo de rechazo: Mantenimiento de fibra óptica programado">
+                    Motivo: Mantenimiento de fibra óptica
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                02/05/2025 16:00
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 text-rose-900 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-rose-600">cancel</span>
+                  Rechazada
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" type="button">
+                    Ver dictamen
+                  </button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Duplicar solicitud" type="button">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6: RES-2025-062 (Cancelada) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors group">
+<td class="py-space-md px-space-md text-center">
+<input aria-label="Seleccionar fila RES-2025-062" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer accent-secondary" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="font-code-mono text-code-mono font-semibold text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-lg">#RES-2025-062</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm flex-shrink-0 opacity-80" data-alt="Retrato formal de director de extensión académica vistiendo traje gris oscuro con fondo institucional arquitectónico desenfocado" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmUfEHS9ZapPhtWF5_dP87buVVysnbiSiM1EwMZ4xwHNbt3BGAMbd0siY3CtV7SIpWQ6rt1HZYjVFFlojtgnZPEACqlBfo4Qnz4m8A5Wbnt9A0icnTty_ks4-xz-bP-1FkeLzNjKC23NHqzAVHd-m8g225a-g_s2R4pFp3RHxmswiQ9-5FQ1OVc0ecI8OlGpcDji73DqUytcnfvIlvzjiKNNGQa35-YTXYPpZyS8mGrZWcr4_fs719"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Mtro. Víctor Toledo</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Extensión Universitaria</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">theater_comedy</span>
+<span class="font-medium text-on-surface-variant">Auditorio Institucional</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Rectoría • Capacidad 250</span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col font-code-mono text-code-mono text-on-surface-variant line-through">
+<span>11/05/2025</span>
+<span>16:00 - 18:00</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant line-clamp-1">Seminario de Empleabilidad</span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span> 95 asistentes
+                  </span>
+</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap font-code-mono text-code-mono text-on-surface-variant">
+                30/04/2025 12:00
+              </td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-slate-500">block</span>
+                  Cancelada
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container font-semibold transition-colors" type="button">
+                    Ver bitácora
+                  </button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Duplicar solicitud" type="button">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Más opciones" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Bottom Controls -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md px-space-md py-space-sm bg-surface-container-lowest shadow-sm">
+<!-- Left: Summary Info -->
+<div class="flex items-center gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<span>Mostrando <strong class="text-on-surface font-semibold">1 - 6</strong> de <strong class="text-on-surface font-semibold">48</strong> reservas</span>
+<span class="hidden md:inline">•</span>
+<div class="hidden md:flex items-center gap-space-2xs">
+<span>Filas por página:</span>
+<select class="bg-surface-container-low text-on-surface font-label-sm text-label-sm rounded-lg px-2 py-1 focus:outline-none cursor-pointer">
+<option value="10">10 filas</option>
+<option value="25">25 filas</option>
+<option value="50">50 filas</option>
+</select>
+</div>
+</div>
+<!-- Right: Pagination Buttons -->
+<div class="flex items-center gap-space-2xs">
+<button class="inline-flex items-center justify-center h-8 px-2.5 rounded-lg bg-surface-container-low text-outline-variant font-label-sm text-label-sm cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px] mr-1">chevron_left</span>
+<span>Anterior</span>
+</button>
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold shadow-sm" type="button">
+            1
+          </button>
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+            2
+          </button>
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+            3
+          </button>
+<span class="px-1 text-on-surface-variant font-body-sm text-body-sm">...</span>
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+            8
+          </button>
+<button class="inline-flex items-center justify-center h-8 px-2.5 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+<span>Siguiente</span>
+<span class="material-symbols-outlined text-[16px] ml-1">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Supplementary Quick Audit / Occupancy Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Tasa de Aprobación Global</span>
+<span class="font-display-lg text-display-lg text-primary font-bold">87.5%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Promedio del semestre en curso</span>
+</div>
+<div class="w-16 h-16 flex-shrink-0">
+<svg class="w-full h-full text-secondary -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="87.5, 100" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Espacio Más Solicitado</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Gabinete de Cómputo</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">28 reservas asignadas (58%)</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">computer</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Tiempo Medio de Resolución</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">4.2 horas</span>
+<span class="font-body-sm text-body-sm text-emerald-800 font-medium">Cumple estándar de acreditación</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">timer</span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

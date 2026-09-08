@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-container": "#2eb7f2", "on-secondary-fixed-variant": "#003ea8", "secondary": "#0051d5", "tertiary-container": "#00455f", "primary-container": "#1e3a8a", "inverse-primary": "#b6c4ff", "on-primary-container": "#90a8ff", "on-tertiary-fixed-variant": "#004c69", "error": "#ba1a1a", "on-error-container": "#93000a", "inverse-on-surface": "#eaf1ff", "on-surface": "#0b1c30", "secondary-fixed-dim": "#b4c5ff", "primary-fixed-dim": "#b6c4ff", "surface-container": "#e5eeff", "surface-variant": "#d3e4fe", "on-secondary-container": "#fefcff", "surface-container-lowest": "#ffffff", "on-secondary": "#ffffff", "error-container": "#ffdad6", "on-primary-fixed-variant": "#264191", "background": "#f8f9ff", "on-primary-fixed": "#00164e", "primary-fixed": "#dce1ff", "secondary-fixed": "#dbe1ff", "surface": "#f8f9ff", "surface-container-low": "#eff4ff", "outline": "#757682", "surface-tint": "#4059aa", "on-background": "#0b1c30", "on-primary": "#ffffff", "on-surface-variant": "#444651", "on-error": "#ffffff", "primary": "#00236f", "surface-dim": "#cbdbf5", "inverse-surface": "#213145", "secondary-container": "#316bf3", "outline-variant": "#c5c5d3", "on-secondary-fixed": "#00174b", "on-tertiary-fixed": "#001e2c", "tertiary": "#002e41", "tertiary-fixed": "#c4e7ff", "surface-container-highest": "#d3e4fe", "on-tertiary": "#ffffff", "surface-bright": "#f8f9ff", "tertiary-fixed-dim": "#7bd0ff", "surface-container-high": "#dce9ff" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-md": "1rem", "space-lg": "1.5rem", "space-2xl": "3rem", "gutter-mobile": "1rem", "space-xs": "0.5rem", "space-2xs": "0.25rem", "space-sm": "0.75rem", "space-xl": "2rem", "gutter-desktop": "1.5rem", "container-max": "80rem" }, fontFamily: { "headline-md": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Inter"], "label-lg": ["Inter"], "label-md": ["Inter"], "code-mono": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "body-sm": ["Inter"], "display-lg": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"] }, fontSize: { "headline-md": ["1.25rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }], "body-lg": ["1rem", { lineHeight: "1.5rem", fontWeight: "400" }], "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }], "label-lg": ["0.875rem", { lineHeight: "1.25rem", fontWeight: "600" }], "label-md": ["0.8125rem", { lineHeight: "1.125rem", fontWeight: "500" }], "code-mono": ["0.8125rem", { lineHeight: "1.25rem", fontWeight: "500" }], "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-lg-mobile": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.015em", fontWeight: "600" }], "body-sm": ["0.75rem", { lineHeight: "1.125rem", fontWeight: "400" }], "display-lg": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.025em", fontWeight: "700" }], "label-sm": ["0.6875rem", { lineHeight: "1rem", letterSpacing: "0.025em", fontWeight: "600" }], "body-md": ["0.875rem", { lineHeight: "1.375rem", fontWeight: "400" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Brand logo. - Primary color: #1e3a8a - Font: inter - Mode: light - Roundness: rounded-sm" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V42iwdZXLbPpFV9UuKDeBoFFH3oJ-7SrYr_RQiB6a3M2Fi9-ltKpt-sWvw6Za_Q2daVGZOSwMZqWgYnJB8qHBVKzj04cg4XDdjwEWY2GaJnW5k6j6uben9CR2xzdnE_MSMHbwyEzyHy9CN-H7ONa0n4j9Vuut_4wZDt6e6IRwGafV8KNm0sSGBTJH_ZcdElZtwUOE9869HIvTdDadocN1wQrxy69KqOOZjS9zq5DqkMprRfi5sSdN12xY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">ReservaCampus</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Gestión Universitaria</span></div></div><div class="px-space-md py-space-sm"><p class="px-space-sm pb-space-2xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Navegación</p><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="inicio-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Inicio (Dashboard)</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-xl shadow-sm" data-path="calendario-de-espacios" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span>Calendario de Espacios</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="mis-reservas" href="#"><span class="material-symbols-outlined text-[20px]">event_available</span><span>Mis Reservas</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="gestion-de-reservas" href="#"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span>Gestión de Reservas</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="espacios-institucionales" href="#"><span class="material-symbols-outlined text-[20px]">meeting_room</span><span>Espacios Institucionales</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="usuarios" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Usuarios</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="configuracion" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Configuración</span></a></nav></div></div><div class="p-space-md bg-surface-container-low/60"><div class="flex items-center gap-space-sm mb-space-sm"><div class="relative flex-shrink-0"><img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1USAhjbBJ0JhIl30V2QhIOiG7A3SD9pSc7MYt6rgU5AXt3EIu2bFnUDlJQFr5aTpPoWOyP7wr3f1ME9A5ViZ7FfyYoZXtgX8xordVCs9qrMEYRtU7UsiA6VQe6jaZuBjxR19V1Qrk93mSlAzYOycbdEiGGrmRz1BN6cU4aGrvEQguvrLZN2YcwM3oTyfYiPf4Yy296DtyfoEybfNyffK_X5JG5M5X2g34CJxqWB5XQGLzMpb4pobkT2pQ"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Dra. Elena Morales</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Administrador Rectoría</span></div></div><a class="flex items-center justify-center gap-space-xs w-full py-space-xs px-space-sm rounded-xl font-label-md text-label-md text-error hover:bg-error-container/40 transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Cerrar Sesión</span></a></div></aside><div class="pl-64 min-h-screen flex flex-col"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[20px]">domain</span><span class="hover:text-on-surface cursor-pointer">Universidad Central</span><span class="material-symbols-outlined text-[16px]">chevron_right</span><div class="flex items-center gap-space-2xs bg-surface-container-low px-space-sm py-space-2xs rounded-lg font-label-md text-label-md text-on-surface"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span>Campus Central</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-2xs font-label-md text-label-md text-on-surface-variant bg-surface-container-low/80 px-space-sm py-space-2xs rounded-lg"><span class="material-symbols-outlined text-[18px]">today</span><span>Lunes, 24 Octubre 2024</span></div><div class="relative flex items-center"><button aria-label="Notificaciones" class="p-space-2xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1USAhjbBJ0JhIl30V2QhIOiG7A3SD9pSc7MYt6rgU5AXt3EIu2bFnUDlJQFr5aTpPoWOyP7wr3f1ME9A5ViZ7FfyYoZXtgX8xordVCs9qrMEYRtU7UsiA6VQe6jaZuBjxR19V1Qrk93mSlAzYOycbdEiGGrmRz1BN6cU4aGrvEQguvrLZN2YcwM3oTyfYiPf4Yy296DtyfoEybfNyffK_X5JG5M5X2g34CJxqWB5XQGLzMpb4pobkT2pQ"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight font-semibold">Dra. Morales</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-none">Rectoría</span></div></div></div></header><main class="flex-1 pt-16 bg-background w-full"><div class="flex flex-col w-full">
+<div class="px-space-lg py-space-md space-y-space-md max-w-full">
+<!-- Top Action & Navigation Banner -->
+<div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-sm sm:gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Calendario de Espacios Institucionales</h1>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Sincronizado con Rectoría
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gestión académica y asignación horaria en tiempo real (Semana 20, 2025)</p>
+</div>
+<div class="flex items-center gap-space-2xs bg-surface-container-low p-1 rounded-lg">
+<button class="px-space-sm py-1 font-label-md text-label-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" type="button">Mes</button>
+<button class="px-space-sm py-1 font-label-md text-label-md rounded-lg bg-surface-container-lowest text-primary shadow-sm transition-all font-semibold" type="button">Semana</button>
+<button class="px-space-sm py-1 font-label-md text-label-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" type="button">Día</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm w-full xl:w-auto justify-between xl:justify-end">
+<div class="flex items-center gap-space-2xs bg-surface-container-low p-1 rounded-lg">
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Semana anterior" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="px-space-sm py-1 font-label-md text-label-md rounded-lg bg-surface-container-lowest text-on-surface shadow-sm" type="button">Hoy</button>
+<button class="p-1 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Semana siguiente" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<span class="px-space-sm font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+            12 al 18 Mayo, 2025
+          </span>
+</div>
+<button class="flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-md py-space-xs rounded-xl font-label-md text-label-md shadow-sm transition-all active:scale-[0.99]" id="btn-nueva-reserva" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Nueva reserva</span>
+</button>
+</div>
+</div>
+<!-- Horizontal Multi-Filter Bar -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<!-- Spaces Chips Filter -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap mr-1">Espacios:</span>
+<button class="px-space-sm py-1 rounded-full font-label-md text-label-md bg-secondary text-on-secondary whitespace-nowrap shadow-sm" type="button">
+          Todos los espacios
+        </button>
+<button class="px-space-sm py-1 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">computer</span>
+          Gabinete Informática <span class="text-on-surface-variant/70 font-code-mono text-body-sm">(30p)</span>
+</button>
+<button class="px-space-sm py-1 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">theater_comedy</span>
+          Auditorio Institucional <span class="text-on-surface-variant/70 font-code-mono text-body-sm">(120p)</span>
+</button>
+<button class="px-space-sm py-1 rounded-full font-label-md text-label-md bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">videocam</span>
+          Sala Streaming <span class="text-on-surface-variant/70 font-code-mono text-body-sm">(10p)</span>
+</button>
+</div>
+<!-- Status & Search Bar -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">Todos</button>
+<button class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Pendientes
+          </button>
+<button class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1" type="button">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> Aprobadas
+          </button>
+<button class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1" type="button">
+<span class="w-2 h-2 rounded-full bg-error"></span> Rechazadas
+          </button>
+<button class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center gap-1" type="button">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Canceladas
+          </button>
+</div>
+<div class="relative min-w-[220px]">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-secondary transition-all" placeholder="Buscar por responsable o aula..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Weekly Interactive Calendar Grid Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Calendar Header (Days) -->
+<div class="grid grid-cols-[72px_repeat(6,1fr)] bg-surface-container-low">
+<div class="p-space-sm flex items-center justify-center font-label-sm text-label-sm text-outline uppercase tracking-wider">
+          GMT-3
+        </div>
+<!-- Lunes 12 -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lun</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">12</span>
+<span class="font-body-sm text-body-sm text-outline">4 eventos</span>
+</div>
+<!-- Martes 13 -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Mar</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">13</span>
+<span class="font-body-sm text-body-sm text-outline">2 eventos</span>
+</div>
+<!-- Miércoles 14 (HOY) -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5 bg-surface-container-high relative">
+<span class="absolute top-1.5 right-2 font-label-sm text-[10px] uppercase font-bold text-secondary bg-surface-container-lowest px-1.5 rounded-full shadow-2xs">Hoy</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Mié</span>
+<div class="w-7 h-7 flex items-center justify-center rounded-full bg-secondary text-on-secondary font-headline-sm text-headline-sm font-bold shadow-sm">
+            14
+          </div>
+<span class="font-body-sm text-body-sm text-secondary font-semibold">6 eventos</span>
+</div>
+<!-- Jueves 15 -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Jue</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">15</span>
+<span class="font-body-sm text-body-sm text-outline">3 eventos</span>
+</div>
+<!-- Viernes 16 -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Vie</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">16</span>
+<span class="font-body-sm text-body-sm text-outline">5 eventos</span>
+</div>
+<!-- Sábado 17 -->
+<div class="p-space-sm flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Sáb</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">17</span>
+<span class="font-body-sm text-body-sm text-outline">1 evento</span>
+</div>
+</div>
+<!-- Schedule Canvas Grid (24-hour vertical timeline) -->
+<div class="grid grid-cols-[72px_repeat(6,1fr)] relative bg-surface-container-lowest min-h-[820px]">
+<!-- Current Time Indicator Line (e.g. 12:15 on Wednesday) -->
+<div class="absolute left-0 right-0 top-[270px] pointer-events-none flex items-center z-30">
+<div class="w-[72px] text-right pr-2">
+<span class="bg-error text-on-error font-code-mono text-[10px] px-1 py-0.5 rounded font-bold">12:15</span>
+</div>
+<div class="h-0.5 flex-1 bg-error relative">
+<span class="w-2.5 h-2.5 rounded-full bg-error absolute -top-1 left-[33.33%] shadow-sm"></span>
+</div>
+</div>
+<!-- Time Column (Left Axis 08:00 to 20:00) -->
+<div class="flex flex-col bg-surface-container-low/40 select-none">
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">08:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">09:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">10:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">11:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">12:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">13:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">14:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">15:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">16:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">17:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">18:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">19:00</div>
+<div class="h-16 flex items-start justify-end pr-3 pt-1 font-code-mono text-body-sm text-outline">20:00</div>
+</div>
+<!-- Day 1: Lun 12 -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-lowest/50 hover:bg-surface-container-low/20 transition-colors">
+<!-- Horizontal Guideline marks -->
+<div class="absolute inset-0 grid grid-rows-13 pointer-events-none opacity-20">
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div class="border-b border-outline/10"></div>
+<div></div>
+</div>
+<!-- Event 1: Lun 08:30 - 10:30 (Aprobado) -->
+<div class="absolute top-[32px] left-1.5 right-1.5 h-[120px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">08:30 - 10:30</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Arquitectura de Servidores</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">computer</span>
+<span class="truncate">Gabinete Informática</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] flex items-center justify-center font-bold">JS</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Ing. Juan Salinas</span>
+</div>
+</div>
+<!-- Event 2: Lun 14:00 - 16:00 (Aprobado) -->
+<div class="absolute top-[384px] left-1.5 right-1.5 h-[120px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">14:00 - 16:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Seminario de Postgrado</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">theater_comedy</span>
+<span class="truncate">Auditorio Institucional</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-secondary text-on-secondary text-[9px] flex items-center justify-center font-bold">DR</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Dra. Rocío Ramos</span>
+</div>
+</div>
+</div>
+<!-- Day 2: Mar 13 -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-lowest/50 hover:bg-surface-container-low/20 transition-colors">
+<!-- Event: Mar 10:00 - 12:00 (Pendiente) -->
+<div class="absolute top-[128px] left-1.5 right-1.5 h-[120px] bg-surface-container rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-on-surface-variant font-semibold">10:00 - 12:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">schedule</span> Pendiente
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Capacitación Docente LMS</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">computer</span>
+<span class="truncate">Gabinete Informática</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-surface-tint text-on-primary text-[9px] flex items-center justify-center font-bold">ML</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Prof. Marcos Luna</span>
+</div>
+</div>
+<!-- Empty slot button hover on slot 15:00 -->
+<div class="absolute top-[448px] left-1.5 right-1.5 h-[64px] rounded-lg border-dashed border-2 border-transparent hover:border-outline-variant hover:bg-surface-container-low flex items-center justify-center opacity-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> Reservar 15:00
+            </span>
+</div>
+</div>
+<!-- Day 3: Mié 14 (HOY - Highlighted column) -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-low/40 hover:bg-surface-container-low transition-colors">
+<!-- Event 1: Mié 09:00 - 11:00 (Pendiente Ámbar) -->
+<div class="absolute top-[64px] left-1.5 right-1.5 h-[124px] bg-surface-container rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-20">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-secondary font-semibold">09:00 - 11:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">pending_actions</span> Pendiente
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Examen Final Redes</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">computer</span>
+<span class="truncate">Gabinete de Informática (30p)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-4 rounded-full bg-secondary text-on-secondary text-[9px] flex items-center justify-center font-bold">AM</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Prof. Alejandro Mendoza</span>
+</div>
+<button class="text-secondary hover:text-primary font-label-sm text-[11px] font-bold" type="button">Revisar</button>
+</div>
+</div>
+<!-- Event 2: Mié 11:30 - 13:30 (Aprobada Verde/Teal Intenso) -->
+<div class="absolute top-[224px] left-1.5 right-1.5 h-[124px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-md cursor-pointer hover:shadow-xl transition-all z-20">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">11:30 - 13:30</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">verified</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-bold line-clamp-1">Conferencia Magistral: IA</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">theater_comedy</span>
+<span class="truncate">Auditorio Institucional (120p)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] flex items-center justify-center font-bold">RS</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Prof. Roberto Silva</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-secondary">sensors</span>
+</div>
+</div>
+<!-- Event 3: Mié 16:00 - 18:00 (Cancelada Gris con tachado suave) -->
+<div class="absolute top-[512px] left-1.5 right-1.5 h-[120px] bg-surface-container-low rounded-lg p-2.5 flex flex-col justify-between opacity-80 cursor-not-allowed z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-outline line-through">16:00 - 18:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-outline font-label-sm text-[10px] font-medium">
+<span class="material-symbols-outlined text-[12px]">cancel</span> Cancelada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant line-through line-clamp-1">Taller Multimedia</p>
+<div class="flex items-center gap-1 text-outline font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+<span class="truncate">Sala Streaming (10p)</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-outline-variant text-outline text-[9px] flex items-center justify-center font-bold">TM</span>
+<span class="font-body-sm text-[11px] text-outline truncate">Equipo Audiovisual</span>
+</div>
+</div>
+<!-- Empty slot button hover on slot 18:30 -->
+<div class="absolute top-[672px] left-1.5 right-1.5 h-[64px] rounded-lg border-dashed border-2 border-transparent hover:border-secondary hover:bg-surface-container-lowest flex items-center justify-center opacity-0 hover:opacity-100 transition-all cursor-pointer">
+<span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> + Reservar horario
+            </span>
+</div>
+</div>
+<!-- Day 4: Jue 15 -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-lowest/50 hover:bg-surface-container-low/20 transition-colors">
+<!-- Event: Jue 11:00 - 13:00 (Aprobado) -->
+<div class="absolute top-[192px] left-1.5 right-1.5 h-[124px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">11:00 - 13:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Asamblea General Decanatura</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">theater_comedy</span>
+<span class="truncate">Auditorio Institucional</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] flex items-center justify-center font-bold">EM</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Dra. Elena Morales</span>
+</div>
+</div>
+<!-- Event: Jue 15:00 - 17:00 (Rechazado) -->
+<div class="absolute top-[448px] left-1.5 right-1.5 h-[120px] bg-error-container/40 rounded-lg p-2.5 flex flex-col justify-between shadow-xs cursor-pointer hover:shadow-sm transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-on-error-container font-semibold">15:00 - 17:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-error font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">do_not_disturb_on</span> Rechazada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Grabación Podcast Estudiantil</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+<span class="truncate">Sala Streaming</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-[11px] text-error font-medium truncate">Conflicto de horario</span>
+<span class="material-symbols-outlined text-[16px] text-error">info</span>
+</div>
+</div>
+</div>
+<!-- Day 5: Vie 16 -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-lowest/50 hover:bg-surface-container-low/20 transition-colors">
+<!-- Event: Vie 09:30 - 12:30 (Aprobado) -->
+<div class="absolute top-[96px] left-1.5 right-1.5 h-[188px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">09:30 - 12:30</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-2">Hackathon Anual de Desarrollo Web</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-[14px]">computer</span>
+<span class="truncate">Gabinete Informática (30p)</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">devices</span>
+<span>Proyector 4K + Switches</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-4 h-4 rounded-full bg-secondary-container text-on-secondary-container text-[9px] flex items-center justify-center font-bold">CF</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Carlos Fuentes</span>
+</div>
+<span class="font-code-mono text-[10px] text-secondary font-bold">3h bloque</span>
+</div>
+</div>
+</div>
+<!-- Day 6: Sáb 17 -->
+<div class="relative group/day p-1 space-y-1 bg-surface-container-lowest/50 hover:bg-surface-container-low/20 transition-colors">
+<!-- Event: Sáb 10:00 - 13:00 (Aprobada) -->
+<div class="absolute top-[128px] left-1.5 right-1.5 h-[188px] bg-surface-container-high rounded-lg p-2.5 flex flex-col justify-between shadow-sm cursor-pointer hover:shadow-md transition-all z-10">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-code-mono text-[11px] text-primary font-semibold">10:00 - 13:00</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px] text-secondary">check_circle</span> Aprobada
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface font-semibold line-clamp-1">Diplomado en Ciberseguridad</p>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[14px]">computer</span>
+<span class="truncate">Gabinete Informática</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] flex items-center justify-center font-bold">VT</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Mtro. Víctor Toledo</span>
+</div>
+</div>
+<div class="absolute top-[384px] inset-x-2 bottom-4 flex flex-col items-center justify-center text-center p-2 opacity-50">
+<span class="material-symbols-outlined text-outline text-[24px]">lock_clock</span>
+<span class="font-body-sm text-[11px] text-outline mt-1">Cierre administrativo 14:00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Institutional Bottom Bar: Real-time Legend & Room Capacity Metric Strip -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-center bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<!-- States Legend -->
+<div class="xl:col-span-6 flex flex-wrap items-center gap-x-space-md gap-y-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Leyenda de Estados:</span>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">Pendiente</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="font-label-md text-label-md text-on-surface">Aprobada</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md text-on-surface">Rechazada</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-label-md text-label-md text-on-surface">Cancelada</span>
+</div>
+</div>
+<!-- Quick Room Availability Strip -->
+<div class="xl:col-span-6 flex flex-wrap items-center justify-start xl:justify-end gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Ocupación Hoy:</span>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1 rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface font-semibold">Gabinete Info.</span>
+<div class="flex items-center gap-1.5">
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[75%]"></div>
+</div>
+<span class="font-code-mono text-[10px] text-on-surface-variant">75%</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1 rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface font-semibold">Auditorio Inst.</span>
+<div class="flex items-center gap-1.5">
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[40%]"></div>
+</div>
+<span class="font-code-mono text-[10px] text-on-surface-variant">40%</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1 rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface font-semibold">Streaming</span>
+<div class="flex items-center gap-1.5">
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[15%]"></div>
+</div>
+<span class="font-code-mono text-[10px] text-on-surface-variant">15%</span>
+</div>
+</div>
+</div>
+<button class="p-1.5 text-secondary hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors" title="Exportar reporte semanal" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Reservation Quick Inspection Modal Dialog (Micro-interaction) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4 hidden" id="reservation-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-150">
+<div class="p-space-md bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">event_seat</span>
+<span class="font-headline-sm text-headline-sm text-primary">Detalle de Asignación</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" id="close-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[14px]">verified</span> Aprobada Institucionalmente
+          </span>
+<span class="font-code-mono text-body-sm text-outline">ID: RES-2025-0841</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Conferencia Magistral: IA</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Jornadas académicas interdisciplinarias sobre ética e implementación de modelos de lenguaje en investigación.</p>
+</div>
+<div class="grid grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Espacio Asignado</span>
+<p class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">theater_comedy</span>
+              Auditorio Institucional
+            </p>
+<span class="font-body-sm text-body-sm text-outline">Capacidad: 120 personas</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Fecha y Bloque 24h</span>
+<p class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+              11:30 - 13:30 (2 horas)
+            </p>
+<span class="font-body-sm text-body-sm text-outline">Miércoles, 14/05/2025</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 bg-surface-container-lowest rounded-lg">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Retrato fotográfico profesional de un catedrático universitario masculino en traje sastre formal con anteojos en un aula académica con iluminación suave y tonos azulados institucionales." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrbSniRFCzQEV3BtI0pvO3JXruMACYYsYxpUzv763oiIaouKYzCAfCUWR04UxwBLmTHctX6gDtboKK5RiilbRf2D7bVCV2wAcBiMbQujINgTlNWFpJ7V7DXbFHOA9KznsrRoqFQ0FXI1gxH9tPSJjZGai8EaIhinMrh2cLB_TXYp-_zNdEsECSvGcndl1HRwYzjW5YRsV9rH7ygmn4rz156SqvYuGmEXqiijFeWKt3WQkr4ECbTr6W"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Prof. Roberto Silva</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Departamento de Ciencias de la Computación</span>
+</div>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low flex items-center justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded-xl font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors" id="close-modal-btn" type="button">
+          Cerrar
+        </button>
+<button class="px-space-md py-2 rounded-xl font-label-md text-label-md bg-primary hover:bg-primary-container text-on-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+          Constancia Oficial
+        </button>
+</div>
+</div>
+</div>
+<script>
+    (function() {
+      const modal = document.getElementById('reservation-modal');
+      const closeModal = document.getElementById('close-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const btnNuevaReserva = document.getElementById('btn-nueva-reserva');
+
+      // Click on interactive event cards triggers modal
+      const events = document.querySelectorAll('.cursor-pointer');
+      events.forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (!card.closest('#reservation-modal')) {
+            modal.classList.remove('hidden');
+          }
+        });
+      });
+
+      if (btnNuevaReserva) {
+        btnNuevaReserva.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+        });
+      }
+
+      if (closeModal) {
+        closeModal.addEventListener('click', () => {
+          modal.classList.add('hidden');
+        });
+      }
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+        }
+      });
+    })();
+  </script>
+</div></main></div></body></html>
