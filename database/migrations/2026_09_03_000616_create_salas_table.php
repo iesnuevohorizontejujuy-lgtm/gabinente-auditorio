@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->text('descripcion')->nullable();
+            $table->string('img')->nullable();
             $table->string('ubicacion')->nullable();
             $table->unsignedInteger('capacidad');
             $table->boolean('activa')->default(true);

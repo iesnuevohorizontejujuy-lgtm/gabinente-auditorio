@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -29,6 +30,7 @@ new #[Title('Reservas')] class extends Component
 
     public string $titulo = '';
     public string $descripcion = '';
+    #[Url(as: 'sala')]
     public string $formSalaId = '';
     public int $cantidadAsistentes = 1;
     public string $inicio = '';
@@ -58,8 +60,7 @@ new #[Title('Reservas')] class extends Component
                     $query
                         ->where('titulo', 'like', '%'.$this->search.'%')
                         ->orWhereHas('profesor', fn ($query) => $query
-                            ->where('name', 'like', '%'.$this->search.'%')
-                            ->orWhere('apellido', 'like', '%'.$this->search.'%'));
+                            ->where('name', 'like', '%'.$this->search.'%'));
                 });
             })
             ->orderByDesc('inicio')
@@ -100,7 +101,9 @@ new #[Title('Reservas')] class extends Component
     {
         Gate::authorize('create', Reserva::class);
 
-        $this->resetReservationForm();
+        $this->reset(['titulo', 'descripcion', 'cantidadAsistentes', 'inicio', 'fin']);
+        $this->cantidadAsistentes = 1;
+        $this->resetValidation();
         Flux::modal('create-reservation')->show();
     }
 
@@ -271,7 +274,7 @@ new #[Title('Reservas')] class extends Component
                             </div>
                         </flux:table.cell>
                         @if (auth()->user()->isAdministrator())
-                            <flux:table.cell>{{ $reserva->profesor->name }} {{ $reserva->profesor->apellido }}</flux:table.cell>
+                            <flux:table.cell>{{ $reserva->profesor->name }}</flux:table.cell>
                         @endif
                         <flux:table.cell>
                             <div class="app-date grid gap-1 text-sm">

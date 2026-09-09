@@ -14,6 +14,16 @@ it('casts room attributes to their domain types', function () {
     expect($sala->capacidad)->toBe(30);
 });
 
+it('stores an optional image path', function () {
+    $sala = Sala::query()->create([
+        'nombre' => 'Auditorio',
+        'img' => 'salas/auditorio.jpg',
+        'capacidad' => 150,
+    ]);
+
+    expect($sala->img)->toBe('salas/auditorio.jpg');
+});
+
 it('returns only active rooms through the active scope', function () {
     $activa = Sala::factory()->create();
     Sala::factory()->inactiva()->create();

@@ -23,6 +23,9 @@
                     </flux:sidebar.item>
 
                     @if (auth()->user()->isAdministrator())
+                        <flux:sidebar.item icon="users" :href="route('admin.users.index')" :current="request()->routeIs('admin.users.*')" wire:navigate>
+                            Usuarios
+                        </flux:sidebar.item>
                         <flux:sidebar.item icon="building-office-2" :href="route('admin.rooms.index')" :current="request()->routeIs('admin.rooms.*')" wire:navigate>
                             Espacios
                         </flux:sidebar.item>

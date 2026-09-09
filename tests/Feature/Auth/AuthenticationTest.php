@@ -15,7 +15,9 @@ class AuthenticationTest extends TestCase
     {
         $response = $this->get(route('login'));
 
-        $response->assertOk();
+        $response
+            ->assertOk()
+            ->assertDontSee('Sign in with a passkey');
     }
 
     public function test_users_can_authenticate_using_the_login_screen(): void
@@ -88,7 +90,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->actingAs($user)->post(route('logout'));
 
-        $response->assertRedirect(route('home'));
+        $response->assertRedirect(route('login'));
 
         $this->assertGuest();
     }

@@ -19,5 +19,5 @@ it('creates professors as active users by default', function () {
 
     expect($user->rol)->toBe(UserRole::Profesor);
     expect($user->activo)->toBeTrue();
-    expect($user->apellido)->not->toBeEmpty();
+    expect($user->name)->not->toBeEmpty();
 });

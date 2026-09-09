@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         User::query()->updateOrCreate(
             ['email' => 'admin@iesnh.edu.ar'],
             [
-                'name' => 'Administrador',
-                'apellido' => 'IESNH',
+                'name' => 'Administrador IESNH',
+                'dni' => '11111111',
                 'rol' => UserRole::Administrador,
                 'activo' => true,
                 'password' => 'Reservas123!',
@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
         );
 
         foreach ([
-            ['name' => 'Laura', 'apellido' => 'Gómez', 'email' => 'laura@iesnh.edu.ar'],
-            ['name' => 'Martín', 'apellido' => 'Pérez', 'email' => 'martin@iesnh.edu.ar'],
+            ['name' => 'Laura Gómez', 'dni' => '22222222', 'email' => 'laura@iesnh.edu.ar'],
+            ['name' => 'Martín Pérez', 'dni' => '33333333', 'email' => 'martin@iesnh.edu.ar'],
         ] as $profesor) {
             User::query()->updateOrCreate(
                 ['email' => $profesor['email']],

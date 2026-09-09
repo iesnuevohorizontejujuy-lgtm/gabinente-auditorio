@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('profesor_id')->constrained('users')->restrictOnDelete();
             $table->string('titulo');
             $table->text('descripcion')->nullable();
+            $table->unsignedInteger('cantidad_asistentes')->default(1);
             $table->dateTime('inicio');
             $table->dateTime('fin');
             $table->string('estado')->default('pendiente');

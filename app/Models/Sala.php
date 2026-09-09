@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string $nombre
  * @property string|null $descripcion
+ * @property string|null $img
  * @property string|null $ubicacion
  * @property int $capacidad
  * @property bool $activa
@@ -23,7 +24,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $reservas_count
  * @property-read Collection<int, Reserva> $reservas
  */
-#[Fillable(['nombre', 'descripcion', 'ubicacion', 'capacidad', 'activa'])]
+#[Fillable(['nombre', 'descripcion', 'img', 'ubicacion', 'capacidad', 'activa'])]
 class Sala extends Model
 {
     /** @use HasFactory<SalaFactory> */

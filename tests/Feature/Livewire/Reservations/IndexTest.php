@@ -25,6 +25,16 @@ it('shows professors only their own reservations', function () {
         ->assertDontSee('Reserva ajena');
 });
 
+it('preselects the room from the dashboard link', function () {
+    $professor = User::factory()->create();
+    $sala = Sala::factory()->create();
+
+    Livewire::actingAs($professor)
+        ->withQueryParams(['sala' => $sala->id])
+        ->test('pages::reservations.index')
+        ->assertSet('formSalaId', (string) $sala->id);
+});
+
 it('creates a reservation with validated data', function () {
     $this->travelTo('2026-09-03 09:00:00');
     $professor = User::factory()->create();

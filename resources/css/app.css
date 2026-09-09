@@ -105,31 +105,6 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
-.reservation-calendar {
-    --fc-border-color: var(--color-zinc-200);
-    --fc-button-bg-color: var(--color-zinc-800);
-    --fc-button-border-color: var(--color-zinc-800);
-    --fc-button-hover-bg-color: var(--color-zinc-700);
-    --fc-button-hover-border-color: var(--color-zinc-700);
-    --fc-button-active-bg-color: var(--color-zinc-950);
-    --fc-button-active-border-color: var(--color-zinc-950);
-    --fc-neutral-bg-color: var(--color-zinc-50);
-    --fc-page-bg-color: transparent;
-    --fc-today-bg-color: color-mix(in oklab, var(--color-blue-500) 12%, transparent);
-}
-
-.dark .reservation-calendar {
-    --fc-border-color: var(--color-zinc-700);
-    --fc-button-bg-color: var(--color-zinc-100);
-    --fc-button-border-color: var(--color-zinc-100);
-    --fc-button-text-color: var(--color-zinc-900);
-    --fc-button-hover-bg-color: var(--color-white);
-    --fc-button-hover-border-color: var(--color-white);
-    --fc-button-active-bg-color: var(--color-zinc-300);
-    --fc-button-active-border-color: var(--color-zinc-300);
-    --fc-neutral-bg-color: var(--color-zinc-900);
-}
-
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
