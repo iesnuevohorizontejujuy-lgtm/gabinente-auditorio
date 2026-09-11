@@ -50,7 +50,7 @@ it('defaults an administrator calendar to the gabinete', function () {
         ->assertSet('salaId', (string) $gabinete->id);
 });
 
-it('shows only approved reservations in their weekly time blocks', function () {
+it('returns only approved reservations in the requested calendar range', function () {
     $user = User::factory()->create();
     $sala = Sala::factory()->create(['nombre' => 'Sala Auditorio']);
     $reserva = Reserva::factory()
@@ -74,18 +74,42 @@ it('shows only approved reservations in their weekly time blocks', function () {
 
     Livewire::actingAs($user)
         ->test('pages::calendar.index')
-        ->set('weekStart', '2026-09-07')
-        ->assertSee('Lunes')
-        ->assertSee('Viernes')
-        ->assertSee('08:00 a 09:20')
-        ->assertSee('20:00 a 21:00')
-        ->assertSee($reserva->titulo)
-        ->assertSee('Prof. '.$user->name)
-        ->assertSee('Sin asignar')
-        ->assertDontSee('Reserva pendiente');
+        ->call('events', '2026-09-07T00:00:00-03:00', '2026-09-14T00:00:00-03:00')
+        ->assertReturned(function (array $events) use ($reserva, $user): bool {
+            expect($events)->toHaveCount(1)
+                ->and($events[0])->toMatchArray([
+                    'id' => $reserva->id,
+                    'title' => 'Consejo académico',
+                    'extendedProps' => [
+                        'sala' => 'Sala Auditorio',
+                        'profesor' => $user->name,
+                        'estado' => 'Aprobada',
+                    ],
+                ]);
+
+            return true;
+        });
 });
 
-it('filters weekly reservations by room', function () {
+it('shows today room occupancy within the institutional schedule', function () {
+    $this->travelTo('2026-09-10 07:00:00');
+    $user = User::factory()->create();
+    $sala = Sala::factory()->create(['nombre' => 'Gabinete de Informática']);
+    Reserva::factory()
+        ->for($sala)
+        ->aprobada()
+        ->create([
+            'inicio' => Carbon::parse('2026-09-10 08:00'),
+            'fin' => Carbon::parse('2026-09-10 09:18'),
+        ]);
+
+    Livewire::actingAs($user)
+        ->test('pages::calendar.index')
+        ->assertSee('Ocupación de hoy')
+        ->assertSee('10%');
+});
+
+it('filters calendar events by room', function () {
     $user = User::factory()->create();
     $selectedRoom = Sala::factory()->create();
     $otherRoom = Sala::factory()->create();
@@ -102,22 +126,35 @@ it('filters weekly reservations by room', function () {
 
     Livewire::actingAs($user)
         ->test('pages::calendar.index')
-        ->set('weekStart', '2026-09-07')
         ->set('salaId', (string) $selectedRoom->id)
-        ->assertSee($selectedReservation->titulo)
-        ->assertDontSee('Reserva de otro espacio');
+        ->call('events', '2026-09-07', '2026-09-14')
+        ->assertReturned(function (array $events) use ($selectedReservation): bool {
+            expect($events)->toHaveCount(1)
+                ->and($events[0]['id'])->toBe($selectedReservation->id)
+                ->and($events[0]['title'])->toBe('Reserva del espacio seleccionado');
+
+            return true;
+        });
 });
 
-it('prepares the dragged time blocks in the reservation form', function () {
+it('prepares a selected FullCalendar interval in the reservation form', function () {
     $professor = User::factory()->create();
     $sala = Sala::factory()->create();
 
     Livewire::actingAs($professor)
         ->test('pages::calendar.index')
-        ->set('weekStart', '2026-09-07')
         ->set('salaId', (string) $sala->id)
-        ->dispatch('calendar-slot-selected', date: '2026-09-10', startSlot: 2, endSlot: 3)
+        ->call('prepareCreateFromCalendar', '2026-09-10T10:00:00-03:00', '2026-09-10T12:00:00-03:00')
         ->assertSet('formSalaId', (string) $sala->id)
         ->assertSet('inicio', '2026-09-10T10:00')
         ->assertSet('fin', '2026-09-10T12:00');
+});
+
+it('rejects invalid calendar ranges', function () {
+    $user = User::factory()->create();
+
+    Livewire::actingAs($user)
+        ->test('pages::calendar.index')
+        ->call('events', '2026-09-14', '2026-09-07')
+        ->assertHasErrors(['end']);
 });

@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -22,41 +21,15 @@ new #[Title('Calendario de reservas')] class extends Component
     #[Url(as: 'sala')]
     public string $salaId = '';
 
-    public string $weekStart = '';
-
     public string $formSalaId = '';
-
     public string $titulo = '';
-
     public string $descripcion = '';
-
     public int $cantidadAsistentes = 1;
-
     public string $inicio = '';
-
     public string $fin = '';
-
-    /** @var list<array{inicio: string, fin: string}> */
-    private const TIME_SLOTS = [
-        ['inicio' => '08:00', 'fin' => '09:20'],
-        ['inicio' => '09:20', 'fin' => '10:00'],
-        ['inicio' => '10:00', 'fin' => '10:40'],
-        ['inicio' => '10:40', 'fin' => '12:00'],
-        ['inicio' => '12:00', 'fin' => '12:40'],
-        ['inicio' => '12:40', 'fin' => '13:20'],
-        ['inicio' => '13:20', 'fin' => '15:20'],
-        ['inicio' => '15:20', 'fin' => '16:00'],
-        ['inicio' => '16:00', 'fin' => '17:00'],
-        ['inicio' => '17:00', 'fin' => '18:00'],
-        ['inicio' => '18:00', 'fin' => '19:00'],
-        ['inicio' => '19:00', 'fin' => '20:00'],
-        ['inicio' => '20:00', 'fin' => '21:00'],
-    ];
 
     public function mount(): void
     {
-        $this->weekStart = now()->startOfWeek(Carbon::MONDAY)->toDateString();
-
         $user = Auth::user();
 
         if ($this->salaId === '' && $user instanceof User && $user->isAdministrator()) {
@@ -76,53 +49,78 @@ new #[Title('Calendario de reservas')] class extends Component
 
     public function updatedSalaId(): void
     {
-        Validator::make(
-            ['sala_id' => $this->salaId],
-            ['sala_id' => ['nullable', 'integer', 'exists:salas,id']],
-        )->validate();
-
+        $this->validateRoomFilter();
+        $this->dispatch('calendar-filter-changed');
     }
 
-    public function previousWeek(): void
+    /**
+     * @return list<array{
+     *     id: int,
+     *     title: string,
+     *     start: string,
+     *     end: string,
+     *     backgroundColor: string,
+     *     borderColor: string,
+     *     extendedProps: array{sala: string, profesor: string, estado: string}
+     * }>
+     */
+    public function events(string $start, string $end): array
     {
-        $this->weekStart = Carbon::parse($this->weekStart)->subWeek()->toDateString();
-        unset($this->calendarReservations, $this->weekDays);
-    }
-
-    public function nextWeek(): void
-    {
-        $this->weekStart = Carbon::parse($this->weekStart)->addWeek()->toDateString();
-        unset($this->calendarReservations, $this->weekDays);
-    }
-
-    public function currentWeek(): void
-    {
-        $this->weekStart = now()->startOfWeek(Carbon::MONDAY)->toDateString();
-        unset($this->calendarReservations, $this->weekDays);
-    }
-
-    #[On('calendar-slot-selected')]
-    public function prepareCreateFromCalendar(string $date, int $startSlot, int $endSlot): void
-    {
-        Gate::authorize('create', Reserva::class);
-
-        $validated = Validator::make(
-            ['date' => $date, 'start_slot' => $startSlot, 'end_slot' => $endSlot],
+        $range = Validator::make(
+            ['start' => $start, 'end' => $end],
             [
-                'date' => ['required', Rule::in(array_column($this->weekDays, 'fecha'))],
-                'start_slot' => ['required', 'integer', 'min:0', 'max:'.(count(self::TIME_SLOTS) - 1)],
-                'end_slot' => ['required', 'integer', 'gte:start_slot', 'max:'.(count(self::TIME_SLOTS) - 1)],
+                'start' => ['required', 'date'],
+                'end' => ['required', 'date', 'after:start'],
             ],
         )->validate();
 
-        $start = self::TIME_SLOTS[$validated['start_slot']]['inicio'];
-        $end = self::TIME_SLOTS[$validated['end_slot']]['fin'];
+        $this->validateRoomFilter();
+        $colors = ['#2563eb', '#7c3aed', '#0891b2', '#059669', '#d97706'];
+
+        return Reserva::query()
+            ->with(['sala', 'profesor'])
+            ->aprobadas()
+            ->entre(Carbon::parse($range['start']), Carbon::parse($range['end']))
+            ->when($this->salaId !== '', fn ($query) => $query->where('sala_id', $this->salaId))
+            ->orderBy('inicio')
+            ->get()
+            ->map(function (Reserva $reserva) use ($colors): array {
+                $color = $colors[($reserva->sala_id - 1) % count($colors)];
+
+                return [
+                    'id' => $reserva->id,
+                    'title' => $reserva->titulo,
+                    'start' => $reserva->inicio->toIso8601String(),
+                    'end' => $reserva->fin->toIso8601String(),
+                    'backgroundColor' => $color,
+                    'borderColor' => $color,
+                    'extendedProps' => [
+                        'sala' => $reserva->sala->nombre,
+                        'profesor' => $reserva->profesor->name,
+                        'estado' => 'Aprobada',
+                    ],
+                ];
+            })
+            ->all();
+    }
+
+    public function prepareCreateFromCalendar(string $start, string $end): void
+    {
+        Gate::authorize('create', Reserva::class);
+
+        $range = Validator::make(
+            ['start' => $start, 'end' => $end],
+            [
+                'start' => ['required', 'date'],
+                'end' => ['required', 'date', 'after:start'],
+            ],
+        )->validate();
 
         $this->reset(['titulo', 'descripcion', 'cantidadAsistentes']);
         $this->cantidadAsistentes = 1;
         $this->formSalaId = $this->salaId;
-        $this->inicio = "{$validated['date']}T{$start}";
-        $this->fin = "{$validated['date']}T{$end}";
+        $this->inicio = Carbon::parse($range['start'])->format('Y-m-d\TH:i');
+        $this->fin = Carbon::parse($range['end'])->format('Y-m-d\TH:i');
         $this->resetValidation();
 
         Flux::modal('create-calendar-reservation')->show();
@@ -150,64 +148,53 @@ new #[Title('Calendario de reservas')] class extends Component
             'fin' => $validated['fin'],
         ]);
 
-        unset($this->calendarReservations);
         Flux::modal('create-calendar-reservation')->close();
         Flux::toast(variant: 'success', text: 'Solicitud de reserva creada.');
+        $this->dispatch('calendar-events-changed');
     }
 
-    /** @return list<array{nombre: string, fecha: string, etiqueta: string}> */
+    /** @return array<int, int> */
     #[Computed]
-    public function weekDays(): array
+    public function roomOccupancy(): array
     {
-        $dayNames = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-        $weekStart = Carbon::parse($this->weekStart)->startOfDay();
+        $businessDayStart = now()->startOfDay()->setTime(8, 0);
+        $businessDayEnd = now()->startOfDay()->setTime(21, 0);
+        $availableMinutes = $businessDayStart->diffInMinutes($businessDayEnd);
+        $salaIds = $this->salas->pluck('id');
 
-        return collect($dayNames)
-            ->map(fn (string $name, int $offset): array => [
-                'nombre' => $name,
-                'fecha' => $weekStart->copy()->addDays($offset)->toDateString(),
-                'etiqueta' => $weekStart->copy()->addDays($offset)->format('d/m'),
-            ])
+        $reservations = Reserva::query()
+            ->aprobadas()
+            ->whereIn('sala_id', $salaIds)
+            ->entre($businessDayStart, $businessDayEnd)
+            ->get(['id', 'sala_id', 'inicio', 'fin']);
+
+        return $this->salas
+            ->mapWithKeys(function (Sala $sala) use ($reservations, $businessDayStart, $businessDayEnd, $availableMinutes): array {
+                $occupiedMinutes = $reservations
+                    ->where('sala_id', $sala->id)
+                    ->sum(function (Reserva $reserva) use ($businessDayStart, $businessDayEnd): float {
+                        $start = $reserva->inicio->greaterThan($businessDayStart) ? $reserva->inicio : $businessDayStart;
+                        $end = $reserva->fin->lessThan($businessDayEnd) ? $reserva->fin : $businessDayEnd;
+
+                        return $start->diffInMinutes($end);
+                    });
+
+                return [$sala->id => (int) min(100, round(($occupiedMinutes / $availableMinutes) * 100))];
+            })
             ->all();
     }
 
-    /** @return list<array{inicio: string, fin: string}> */
-    #[Computed]
-    public function timeSlots(): array
+    private function validateRoomFilter(): void
     {
-        return self::TIME_SLOTS;
-    }
-
-    /** @return Collection<int, Reserva> */
-    #[Computed]
-    public function calendarReservations(): Collection
-    {
-        $weekStart = Carbon::parse($this->weekStart)->startOfDay();
-        $weekEnd = $weekStart->copy()->addDays(5);
-
-        return Reserva::query()
-            ->with(['sala', 'profesor'])
-            ->aprobadas()
-            ->entre($weekStart, $weekEnd)
-            ->when($this->salaId !== '', fn ($query) => $query->where('sala_id', $this->salaId))
-            ->orderBy('inicio')
-            ->get();
-    }
-
-    public function reservationForSlot(string $date, string $start, string $end): ?Reserva
-    {
-        $slotStart = Carbon::parse("{$date} {$start}");
-        $slotEnd = Carbon::parse("{$date} {$end}");
-
-        return $this->calendarReservations->first(
-            fn (Reserva $reserva): bool => $reserva->inicio->lt($slotEnd) && $reserva->fin->gt($slotStart),
-        );
+        Validator::make(
+            ['sala_id' => $this->salaId],
+            ['sala_id' => ['nullable', 'integer', Rule::exists('salas', 'id')->where('activa', true)]],
+        )->validate();
     }
 
     private function user(): User
     {
         $user = Auth::user();
-
         abort_unless($user instanceof User, 401);
 
         return $user;
@@ -216,123 +203,107 @@ new #[Title('Calendario de reservas')] class extends Component
 ?>
 
 <div
-    class="app-page"
-    x-data="{
-        selecting: false,
-        selectedDay: null,
-        startSlot: null,
-        endSlot: null,
-        begin(day, slot) {
-            this.selecting = true;
-            this.selectedDay = day;
-            this.startSlot = slot;
-            this.endSlot = slot;
-        },
-        extend(day, slot) {
-            if (this.selecting && this.selectedDay === day) {
-                this.endSlot = slot;
-            }
-        },
-        finish() {
-            if (! this.selecting) {
-                return;
-            }
-
-            const startSlot = Math.min(this.startSlot, this.endSlot);
-            const endSlot = Math.max(this.startSlot, this.endSlot);
-
-            this.selecting = false;
-            $dispatch('calendar-slot-selected', {
-                date: this.selectedDay,
-                startSlot,
-                endSlot,
-            });
-        },
-        isSelected(day, slot) {
-            if (this.selectedDay !== day || this.startSlot === null || this.endSlot === null) {
-                return false;
-            }
-
-            return slot >= Math.min(this.startSlot, this.endSlot) && slot <= Math.max(this.startSlot, this.endSlot);
-        },
-    }"
-    @pointerup.window="finish()"
-    @pointercancel.window="selecting = false"
+    class="app-page calendar-page"
+    x-data="reservationCalendar"
+    data-can-create="{{ auth()->user()->can('create', Reserva::class) ? 'true' : 'false' }}"
+    @calendar-filter-changed.window="calendar?.refetchEvents()"
+    @calendar-events-changed.window="calendar?.refetchEvents()"
 >
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div class="grid gap-1">
-            <p class="app-eyebrow">Agenda institucional</p>
-            <flux:heading size="xl" level="1">Calendario de espacios</flux:heading>
-            <flux:text>Consultá la disponibilidad aprobada de los espacios institucionales.</flux:text>
+    <flux:card class="calendar-hero p-5 sm:p-6">
+        <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+            <div class="grid gap-2">
+                <div class="flex flex-wrap items-center gap-3">
+                    <div>
+                        <p class="app-eyebrow">Agenda institucional</p>
+                        <flux:heading size="xl" level="1">Calendario de espacios institucionales</flux:heading>
+                    </div>
+                    <flux:badge color="blue" size="sm">Actualizado en tiempo real</flux:badge>
+                </div>
+                <flux:text>Consultá la disponibilidad aprobada en vistas mensual, semanal o diaria.</flux:text>
+                @can('create', Reserva::class)
+                    <flux:text class="text-sm">Seleccioná un intervalo libre para iniciar una solicitud.</flux:text>
+                @endcan
+            </div>
+
             @can('create', Reserva::class)
-                <flux:text class="text-sm">Arrastrá sobre bloques sin asignar para solicitar una reserva.</flux:text>
+                <flux:button :href="route('reservations.index', array_filter(['sala' => $salaId]))" wire:navigate variant="primary" icon="plus">
+                    Nueva reserva
+                </flux:button>
             @endcan
         </div>
+    </flux:card>
 
-        <flux:field class="w-full sm:max-w-xs">
-            <flux:label>Espacio</flux:label>
-            <flux:select wire:model.live="salaId">
-                <flux:select.option value="">Todos los espacios</flux:select.option>
-                @foreach ($this->salas as $sala)
-                    <flux:select.option :value="$sala->id" wire:key="calendar-room-{{ $sala->id }}">
-                        {{ $sala->nombre }}
-                    </flux:select.option>
-                @endforeach
-            </flux:select>
-            <flux:error name="salaId" />
-        </flux:field>
-    </div>
-
-    <flux:card class="app-panel overflow-hidden p-0">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200 p-4 dark:border-zinc-700">
-            <div class="flex items-center gap-2">
-                <flux:button size="sm" variant="ghost" icon="chevron-left" wire:click="previousWeek">Semana anterior</flux:button>
-                <flux:button size="sm" variant="ghost" wire:click="currentWeek">Semana actual</flux:button>
-                <flux:button size="sm" variant="ghost" icon="chevron-right" wire:click="nextWeek">Semana siguiente</flux:button>
-            </div>
-            <p class="app-date text-sm font-medium text-zinc-700 dark:text-zinc-200">
-                {{ \Illuminate\Support\Carbon::parse($weekStart)->format('d/m/Y') }}–{{ \Illuminate\Support\Carbon::parse($weekStart)->addDays(4)->format('d/m/Y') }}
-            </p>
-        </div>
-
-        <div class="overflow-x-auto" wire:loading.class="opacity-60" wire:target="salaId,previousWeek,nextWeek,currentWeek">
-            <div class="grid min-w-240 grid-cols-[8rem_repeat(5,minmax(10rem,1fr))]">
-                <div class="sticky left-0 z-10 border-b border-r border-zinc-200 bg-zinc-50 p-3 text-xs font-semibold tracking-wide text-zinc-500 uppercase dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">Horario</div>
-                @foreach ($this->weekDays as $weekDay)
-                    <div wire:key="day-{{ $weekDay['fecha'] }}" class="border-b border-r border-zinc-200 bg-zinc-50 p-3 text-center dark:border-zinc-700 dark:bg-zinc-900">
-                        <p class="text-sm font-semibold text-zinc-900 dark:text-white">{{ $weekDay['nombre'] }}</p>
-                        <p class="app-date text-xs text-zinc-500 dark:text-zinc-400">{{ $weekDay['etiqueta'] }}</p>
-                    </div>
-                @endforeach
-
-                @foreach ($this->timeSlots as $slotIndex => $timeSlot)
-                    <div wire:key="time-{{ $timeSlot['inicio'] }}" class="sticky left-0 z-10 flex min-h-20 items-center border-b border-r border-zinc-200 bg-white p-3 text-center text-xs font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
-                        {{ $timeSlot['inicio'] }} a {{ $timeSlot['fin'] }}
-                    </div>
-                    @foreach ($this->weekDays as $weekDay)
-                        @php($reserva = $this->reservationForSlot($weekDay['fecha'], $timeSlot['inicio'], $timeSlot['fin']))
-                        <div
-                            wire:key="slot-{{ $weekDay['fecha'] }}-{{ $timeSlot['inicio'] }}"
-                            @if (! $reserva && auth()->user()->can('create', Reserva::class))
-                                @pointerdown.prevent="begin('{{ $weekDay['fecha'] }}', {{ $slotIndex }})"
-                                @pointerenter="extend('{{ $weekDay['fecha'] }}', {{ $slotIndex }})"
-                                :class="isSelected('{{ $weekDay['fecha'] }}', {{ $slotIndex }}) ? 'bg-campus-100/70 dark:bg-campus-900/40' : ''"
-                            @endif
-                            class="min-h-20 border-b border-r border-zinc-200 p-2 dark:border-zinc-700"
+    <flux:card class="calendar-filters p-4 sm:p-5">
+        <div class="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div class="grid gap-3">
+                <p class="text-xs font-semibold tracking-widest text-zinc-500 uppercase dark:text-zinc-400">Espacios</p>
+                <div class="hidden flex-wrap gap-2 md:flex">
+                    <button type="button" wire:click="$set('salaId', '')" @class(['calendar-filter-pill', 'calendar-filter-pill-active' => $salaId === '']) aria-pressed="{{ $salaId === '' ? 'true' : 'false' }}">
+                        Todos los espacios
+                    </button>
+                    @foreach ($this->salas as $sala)
+                        <button
+                            type="button"
+                            wire:key="calendar-room-pill-{{ $sala->id }}"
+                            wire:click="$set('salaId', '{{ $sala->id }}')"
+                            @class(['calendar-filter-pill', 'calendar-filter-pill-active' => $salaId === (string) $sala->id])
+                            aria-pressed="{{ $salaId === (string) $sala->id ? 'true' : 'false' }}"
                         >
-                            @if ($reserva)
-                                <div class="h-full rounded-md bg-campus-100 p-2 text-xs text-campus-900 dark:bg-campus-900/60 dark:text-campus-100">
-                                    <p class="font-semibold">{{ $reserva->titulo }}</p>
-                                    <p class="mt-1 text-campus-700 dark:text-campus-300">{{ $reserva->sala->nombre }}</p>
-                                    <p class="mt-1 text-campus-700 dark:text-campus-300">Prof. {{ $reserva->profesor->name }}</p>
-                                </div>
-                            @else
-                                <div class="flex h-full min-h-16 items-center justify-center rounded-md bg-zinc-50 px-2 text-center text-xs font-medium text-zinc-400 dark:bg-zinc-800/40 dark:text-zinc-500">
-                                    Sin asignar
-                                </div>
-                            @endif
-                        </div>
+                            {{ $sala->nombre }} <span class="text-xs opacity-70">({{ $sala->capacidad }}p)</span>
+                        </button>
                     @endforeach
+                </div>
+
+                <flux:field class="md:hidden">
+                    <flux:label>Espacio</flux:label>
+                    <flux:select wire:model.live="salaId">
+                        <flux:select.option value="">Todos los espacios</flux:select.option>
+                        @foreach ($this->salas as $sala)
+                            <flux:select.option :value="$sala->id" wire:key="calendar-room-{{ $sala->id }}">{{ $sala->nombre }}</flux:select.option>
+                        @endforeach
+                    </flux:select>
+                    <flux:error name="salaId" />
+                </flux:field>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-zinc-600 dark:text-zinc-300">
+                <span class="font-semibold tracking-wide uppercase">Estado visible</span>
+                <span class="inline-flex items-center gap-2"><span class="size-2.5 rounded-full bg-emerald-600"></span>Aprobadas</span>
+            </div>
+        </div>
+    </flux:card>
+
+    <flux:card class="app-panel calendar-shell relative overflow-hidden p-3 sm:p-5">
+        <div wire:loading.flex wire:target="events,salaId" class="absolute inset-0 z-20 items-center justify-center bg-white/70 backdrop-blur-xs dark:bg-zinc-900/70">
+            <flux:icon.loading class="size-6" />
+        </div>
+        <div wire:ignore>
+            <div x-ref="calendar" class="reservation-calendar min-h-96"></div>
+        </div>
+    </flux:card>
+
+    <flux:card class="calendar-summary p-4 sm:p-5">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+                <span class="text-xs font-semibold tracking-widest text-zinc-500 uppercase dark:text-zinc-400">Indicaciones</span>
+                <span class="inline-flex items-center gap-2"><span class="size-2.5 rounded-full bg-emerald-600"></span>Reserva aprobada</span>
+                @can('create', Reserva::class)
+                    <span class="inline-flex items-center gap-2"><flux:icon.cursor-arrow-ripple class="size-4" />Arrastrá para seleccionar un horario</span>
+                @endcan
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="text-xs font-semibold tracking-widest text-zinc-500 uppercase dark:text-zinc-400">Ocupación de hoy</span>
+                @foreach ($this->salas as $sala)
+                    <div wire:key="calendar-occupancy-{{ $sala->id }}" class="calendar-occupancy">
+                        <div class="flex items-center justify-between gap-4 text-xs">
+                            <span class="max-w-28 truncate font-medium">{{ $sala->nombre }}</span>
+                            <span class="app-date text-zinc-500 dark:text-zinc-400">{{ $this->roomOccupancy[$sala->id] }}%</span>
+                        </div>
+                        <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
+                            <div class="h-full rounded-full bg-campus-600" style="width: {{ $this->roomOccupancy[$sala->id] }}%"></div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>
@@ -342,7 +313,7 @@ new #[Title('Calendario de reservas')] class extends Component
         <form wire:submit="create" class="space-y-6">
             <div>
                 <flux:heading size="lg">Nueva reserva</flux:heading>
-                <flux:text class="mt-2">Completá los datos para solicitar los bloques seleccionados.</flux:text>
+                <flux:text class="mt-2">Completá los datos para solicitar el horario seleccionado.</flux:text>
             </div>
 
             <flux:select wire:model="formSalaId" label="Espacio" required>

@@ -19,7 +19,7 @@ final class DocentesImport implements ToCollection, WithHeadingRow
     public int $skippedCount = 0;
 
     /**
-     * @param  Collection<int, array{apellido_y_nombre?: mixed, dni?: mixed, correo?: mixed}>  $rows
+     * @param  Collection<int, Collection<string, mixed>>  $rows
      */
     public function collection(Collection $rows): void
     {
@@ -31,7 +31,7 @@ final class DocentesImport implements ToCollection, WithHeadingRow
 
         DB::transaction(function () use ($rows): void {
             foreach ($rows as $index => $row) {
-                $teacher = $this->validatedTeacher($row instanceof Collection ? $row->all() : $row, $index + 2);
+                $teacher = $this->validatedTeacher($row->all(), $index + 2);
 
                 $alreadyExists = User::query()
                     ->where('email', $teacher['email'])
@@ -83,6 +83,12 @@ final class DocentesImport implements ToCollection, WithHeadingRow
             ]);
         }
 
-        return $validator->validated();
+        $validated = $validator->validated();
+
+        return [
+            'name' => (string) $validated['name'],
+            'dni' => (string) $validated['dni'],
+            'email' => (string) $validated['email'],
+        ];
     }
 }

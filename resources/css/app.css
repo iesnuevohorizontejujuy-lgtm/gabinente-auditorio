@@ -89,6 +89,119 @@
     .app-date {
         font-variant-numeric: tabular-nums;
     }
+
+    .calendar-page {
+        @apply gap-4;
+    }
+
+    .calendar-hero,
+    .calendar-filters,
+    .calendar-summary {
+        @apply border border-zinc-200 bg-white shadow-sm dark:border-zinc-700 dark:bg-zinc-900;
+    }
+
+    .calendar-filter-pill {
+        @apply inline-flex min-h-9 items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:border-campus-300 hover:bg-campus-50 hover:text-campus-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-campus-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:border-campus-700 dark:hover:bg-campus-900/50 dark:hover:text-campus-100;
+    }
+
+    .calendar-filter-pill-active {
+        @apply border-campus-700 bg-campus-700 text-white shadow-sm hover:border-campus-800 hover:bg-campus-800 hover:text-white dark:border-campus-500 dark:bg-campus-600 dark:text-white;
+    }
+
+    .calendar-shell {
+        @apply min-w-0;
+    }
+
+    .reservation-calendar {
+        --fc-border-color: var(--color-zinc-200);
+        --fc-button-bg-color: var(--color-campus-700);
+        --fc-button-border-color: var(--color-campus-700);
+        --fc-button-hover-bg-color: var(--color-campus-800);
+        --fc-button-hover-border-color: var(--color-campus-800);
+        --fc-button-active-bg-color: var(--color-campus-900);
+        --fc-button-active-border-color: var(--color-campus-900);
+        --fc-event-text-color: #fff;
+        --fc-neutral-bg-color: var(--color-campus-50);
+        --fc-page-bg-color: #fff;
+        --fc-today-bg-color: rgb(219 234 254 / 45%);
+        @apply min-w-[46rem] text-sm text-zinc-700 dark:text-zinc-200;
+    }
+
+    .calendar-shell > div[wire\:ignore] {
+        @apply overflow-x-auto;
+    }
+
+    .reservation-calendar .fc-toolbar {
+        @apply mb-5 flex-wrap gap-3;
+    }
+
+    .reservation-calendar .fc-toolbar-title {
+        @apply text-lg font-bold tracking-tight text-zinc-950 sm:text-xl dark:text-white;
+    }
+
+    .reservation-calendar .fc-button {
+        @apply rounded-md px-3 py-2 text-sm font-semibold shadow-none transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-campus-600;
+    }
+
+    .reservation-calendar .fc-scrollgrid {
+        @apply overflow-hidden rounded-lg;
+    }
+
+    .reservation-calendar .fc-col-header-cell {
+        @apply bg-campus-50 text-xs font-semibold tracking-wide text-campus-900 uppercase dark:bg-campus-900/50 dark:text-campus-100;
+    }
+
+    .reservation-calendar .fc-col-header-cell-cushion {
+        @apply py-3;
+    }
+
+    .reservation-calendar .fc-timegrid-slot {
+        height: 1.75rem;
+    }
+
+    .reservation-calendar .fc-timegrid-slot-label-cushion,
+    .reservation-calendar .fc-daygrid-day-number {
+        @apply text-xs font-medium text-zinc-500 dark:text-zinc-400;
+    }
+
+    .reservation-calendar .fc-event {
+        @apply rounded-md border-l-4 px-1 shadow-sm;
+    }
+
+    .reservation-calendar .fc-event-main {
+        @apply p-1;
+    }
+
+    .reservation-calendar .fc-timegrid-now-indicator-line {
+        @apply border-red-500;
+    }
+
+    .reservation-calendar .fc-highlight {
+        @apply bg-campus-200/70 dark:bg-campus-700/50;
+    }
+
+    .dark .reservation-calendar {
+        --fc-border-color: var(--color-zinc-700);
+        --fc-neutral-bg-color: var(--color-zinc-800);
+        --fc-page-bg-color: var(--color-zinc-900);
+        --fc-today-bg-color: rgb(30 58 138 / 25%);
+    }
+
+    .calendar-occupancy {
+        @apply min-w-36 rounded-lg bg-zinc-50 px-3 py-2 dark:bg-zinc-800;
+    }
+}
+
+@media (max-width: 767px) {
+    .reservation-calendar .fc-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .reservation-calendar .fc-toolbar-chunk {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {
