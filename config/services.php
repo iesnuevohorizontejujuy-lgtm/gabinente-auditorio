@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'argentina_datos' => [
+        'url' => env('ARGENTINA_DATOS_URL', 'https://api.argentinadatos.com'),
+    ],
+
 ];

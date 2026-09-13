@@ -6,4 +6,4 @@ paths:
 # Css
 
 ## FullCalendar para disponibilidad de espacios
-El calendario de espacios usa FullCalendar v6 instalado por npm, con timeGridWeek como vista inicial y estilos centralizados en resources/css/app.css. Los eventos se obtienen desde Livewire por rango visible y solo incluyen reservas aprobadas; al cambiar el filtro o crear una solicitud se debe ejecutar refetchEvents().
+El calendario es individual por sala: siempre debe existir un salaId activo y no hay vista global. Muestra reservas aprobadas en verde y pendientes en amarillo (todas para administradores; solo las propias para profesores). Los eventos accionables abren el modal de edición/cancelación y cada alta o cambio ejecuta refetchEvents().

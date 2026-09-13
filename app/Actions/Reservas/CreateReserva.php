@@ -15,7 +15,7 @@ final class CreateReserva
     public function __construct(private ReservaRuleService $rules) {}
 
     /**
-     * @param  array{sala_id: int, titulo: string, descripcion: string|null, cantidad_asistentes: int, inicio: string, fin: string}  $data
+     * @param  array{sala_id: int, titulo: string, inicio: string, fin: string}  $data
      */
     public function handle(User $profesor, array $data): Reserva
     {
@@ -25,7 +25,7 @@ final class CreateReserva
         $inicio = Carbon::parse($data['inicio']);
         $fin = Carbon::parse($data['fin']);
 
-        $this->rules->ensureCanBeRequested($profesor, $sala, $inicio, $fin, $data['cantidad_asistentes']);
+        $this->rules->ensureCanBeRequested($profesor, $sala, $inicio, $fin);
 
         $reserva = Reserva::query()->create([
             ...$data,

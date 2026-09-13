@@ -16,7 +16,6 @@ final class ReservaRuleService
         Sala $sala,
         CarbonInterface $inicio,
         CarbonInterface $fin,
-        int $cantidadAsistentes,
     ): void {
         if (! $profesor->activo || ! $profesor->isProfessor()) {
             throw ValidationException::withMessages([
@@ -50,11 +49,6 @@ final class ReservaRuleService
             ]);
         }
 
-        if ($cantidadAsistentes < 1 || $cantidadAsistentes > $sala->capacidad) {
-            throw ValidationException::withMessages([
-                'cantidadAsistentes' => "La capacidad máxima de este espacio es de {$sala->capacidad} personas.",
-            ]);
-        }
     }
 
     public function ensureCanBeApproved(Reserva $reserva): void
@@ -66,7 +60,6 @@ final class ReservaRuleService
             $reserva->sala,
             $reserva->inicio,
             $reserva->fin,
-            $reserva->cantidad_asistentes,
         );
 
         $hasOverlap = Reserva::query()

@@ -38,14 +38,12 @@ it('preselects the room from the dashboard link', function () {
 it('creates a reservation with validated data', function () {
     $this->travelTo('2026-09-03 09:00:00');
     $professor = User::factory()->create();
-    $sala = Sala::factory()->create(['capacidad' => 25]);
+    $sala = Sala::factory()->create();
 
     Livewire::actingAs($professor)
         ->test('pages::reservations.index')
         ->set('formSalaId', (string) $sala->id)
         ->set('titulo', 'Reunión de departamento')
-        ->set('descripcion', 'Planificación académica')
-        ->set('cantidadAsistentes', 12)
         ->set('inicio', '2026-09-04T10:00')
         ->set('fin', '2026-09-04T11:00')
         ->call('create')
@@ -55,7 +53,6 @@ it('creates a reservation with validated data', function () {
         'sala_id' => $sala->id,
         'profesor_id' => $professor->id,
         'titulo' => 'Reunión de departamento',
-        'cantidad_asistentes' => 12,
         'estado' => ReservaEstado::Pendiente->value,
     ]);
     $this->assertDatabaseCount('reserva_historials', 1);
@@ -65,7 +62,6 @@ it('allows an administrator to approve a pending reservation', function () {
     $this->travelTo('2026-09-03 09:00:00');
     $administrator = User::factory()->administrator()->create();
     $reserva = Reserva::factory()->create([
-        'cantidad_asistentes' => 5,
         'inicio' => '2026-09-04 10:00:00',
         'fin' => '2026-09-04 11:00:00',
     ]);
@@ -75,7 +71,9 @@ it('allows an administrator to approve a pending reservation', function () {
         ->call('approve', $reserva->id)
         ->assertHasNoErrors();
 
-    expect($reserva->refresh()->estado)->toBe(ReservaEstado::Aprobada);
+    expect($reserva->refresh())
+        ->estado->toBe(ReservaEstado::Aprobada)
+        ->motivo_resolucion->toBeNull();
 });
 
 it('forbids administrators from creating professor reservations', function () {

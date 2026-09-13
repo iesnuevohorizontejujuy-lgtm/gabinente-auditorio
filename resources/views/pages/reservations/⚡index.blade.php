@@ -29,10 +29,8 @@ new #[Title('Reservas')] class extends Component
     public string $salaId = '';
 
     public string $titulo = '';
-    public string $descripcion = '';
     #[Url(as: 'sala')]
     public string $formSalaId = '';
-    public int $cantidadAsistentes = 1;
     public string $inicio = '';
     public string $fin = '';
 
@@ -101,8 +99,7 @@ new #[Title('Reservas')] class extends Component
     {
         Gate::authorize('create', Reserva::class);
 
-        $this->reset(['titulo', 'descripcion', 'cantidadAsistentes', 'inicio', 'fin']);
-        $this->cantidadAsistentes = 1;
+        $this->reset(['titulo', 'inicio', 'fin']);
         $this->resetValidation();
         Flux::modal('create-reservation')->show();
     }
@@ -114,8 +111,6 @@ new #[Title('Reservas')] class extends Component
         $validated = $this->validate([
             'formSalaId' => ['required', 'integer', Rule::exists('salas', 'id')->where('activa', true)],
             'titulo' => ['required', 'string', 'max:255'],
-            'descripcion' => ['nullable', 'string', 'max:2000'],
-            'cantidadAsistentes' => ['required', 'integer', 'min:1', 'max:10000'],
             'inicio' => ['required', 'date'],
             'fin' => ['required', 'date', 'after:inicio'],
         ]);
@@ -123,8 +118,6 @@ new #[Title('Reservas')] class extends Component
         $action->handle($this->user(), [
             'sala_id' => (int) $validated['formSalaId'],
             'titulo' => $validated['titulo'],
-            'descripcion' => $validated['descripcion'] ?: null,
-            'cantidad_asistentes' => (int) $validated['cantidadAsistentes'],
             'inicio' => $validated['inicio'],
             'fin' => $validated['fin'],
         ]);
@@ -200,8 +193,7 @@ new #[Title('Reservas')] class extends Component
 
     private function resetReservationForm(): void
     {
-        $this->reset(['formSalaId', 'titulo', 'descripcion', 'cantidadAsistentes', 'inicio', 'fin']);
-        $this->cantidadAsistentes = 1;
+        $this->reset(['formSalaId', 'titulo', 'inicio', 'fin']);
         $this->resetValidation();
     }
 
@@ -259,7 +251,6 @@ new #[Title('Reservas')] class extends Component
                     <flux:table.column>Profesor</flux:table.column>
                 @endif
                 <flux:table.column>Fecha y horario</flux:table.column>
-                <flux:table.column>Asistentes</flux:table.column>
                 <flux:table.column>Estado</flux:table.column>
                 <flux:table.column align="end">Acciones</flux:table.column>
             </flux:table.columns>
@@ -282,7 +273,6 @@ new #[Title('Reservas')] class extends Component
                                 <span class="text-zinc-500 dark:text-zinc-400">{{ $reserva->inicio->format('H:i') }}–{{ $reserva->fin->format('H:i') }}</span>
                             </div>
                         </flux:table.cell>
-                        <flux:table.cell>{{ $reserva->cantidad_asistentes }}</flux:table.cell>
                         <flux:table.cell>
                             <flux:badge :color="$reserva->estado->color()" size="sm">{{ $reserva->estado->label() }}</flux:badge>
                         </flux:table.cell>
@@ -302,7 +292,7 @@ new #[Title('Reservas')] class extends Component
                     </flux:table.row>
                 @empty
                     <flux:table.row>
-                        <flux:table.cell colspan="6" class="py-8 text-center">No hay reservas para mostrar.</flux:table.cell>
+                        <flux:table.cell colspan="5" class="py-8 text-center">No hay reservas para mostrar.</flux:table.cell>
                     </flux:table.row>
                 @endforelse
             </flux:table.rows>
@@ -325,8 +315,6 @@ new #[Title('Reservas')] class extends Component
                 @endforeach
             </flux:select>
             <flux:input wire:model="titulo" label="Actividad" required />
-            <flux:textarea wire:model="descripcion" label="Descripción" rows="3" />
-            <flux:input wire:model="cantidadAsistentes" type="number" min="1" label="Cantidad de asistentes" required />
 
             <div class="grid gap-4 sm:grid-cols-2">
                 <flux:input wire:model="inicio" type="datetime-local" label="Inicio" required />

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -33,6 +34,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read Collection<int, Carrera> $carreras
  * @property-read Collection<int, Reserva> $reservas
  */
 #[Fillable(['name', 'dni', 'email', 'rol', 'activo', 'password'])]
@@ -73,6 +75,12 @@ class User extends Authenticatable implements PasskeyUser
     public function reservas(): HasMany
     {
         return $this->hasMany(Reserva::class, 'profesor_id');
+    }
+
+    /** @return BelongsToMany<Carrera, $this> */
+    public function carreras(): BelongsToMany
+    {
+        return $this->belongsToMany(Carrera::class)->withTimestamps();
     }
 
     public function isAdministrator(): bool

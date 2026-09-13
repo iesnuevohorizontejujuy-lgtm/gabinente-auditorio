@@ -38,7 +38,6 @@ class ReservaSeeder extends Seeder
                         'titulo' => 'Actividad de demostración',
                     ],
                     [
-                        'descripcion' => 'Reserva local para comprobar el calendario.',
                         'inicio' => $inicio,
                         'fin' => $inicio->copy()->addHour(),
                         'estado' => $index === 0

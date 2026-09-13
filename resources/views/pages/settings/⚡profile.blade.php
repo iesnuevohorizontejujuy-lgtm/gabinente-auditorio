@@ -1,10 +1,15 @@
 <?php
 
 use App\Concerns\ProfileValidationRules;
+use App\Models\Carrera;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,14 +19,18 @@ new #[Title('Profile settings')] class extends Component {
 
     public string $name = '';
     public string $email = '';
+    public string $carreras = '';
 
     /**
      * Mount the component.
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+        $user = $this->user();
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->carreras = $user->carreras()->orderBy('nombre')->pluck('nombre')->implode(', ');
     }
 
     /**
@@ -29,17 +38,34 @@ new #[Title('Profile settings')] class extends Component {
      */
     public function updateProfileInformation(): void
     {
-        $user = Auth::user();
+        $user = $this->user();
 
-        $validated = $this->validate($this->profileRules($user->id));
+        $validated = $this->validate([
+            ...$this->profileRules($user->id),
+            'carreras' => $user->isProfessor()
+                ? ['required', 'string', 'max:1250']
+                : ['nullable', 'string', 'max:1250'],
+        ]);
+        $careerNames = $user->isProfessor() ? $this->careerNames() : [];
 
-        $user->fill($validated);
+        DB::transaction(function () use ($user, $validated, $careerNames): void {
+            $user->fill([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+            ]);
 
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
+            if ($user->isDirty('email')) {
+                $user->email_verified_at = null;
+            }
 
-        $user->save();
+            $user->save();
+
+            $careerIds = collect($careerNames)
+                ->map(fn (string $name): int => Carrera::query()->firstOrCreate(['nombre' => $name])->id)
+                ->all();
+
+            $user->carreras()->sync($careerIds);
+        });
 
         Flux::toast(variant: 'success', text: __('Profile updated.'));
     }
@@ -74,6 +100,44 @@ new #[Title('Profile settings')] class extends Component {
         return ! Auth::user() instanceof MustVerifyEmail
             || (Auth::user() instanceof MustVerifyEmail && Auth::user()->hasVerifiedEmail());
     }
+
+    /** @return list<string> */
+    private function careerNames(): array
+    {
+        $names = collect(explode(',', $this->carreras))
+            ->map(fn (string $name): string => Str::squish($name))
+            ->filter()
+            ->unique(fn (string $name): string => Str::lower($name))
+            ->values();
+
+        if ($names->isEmpty()) {
+            throw ValidationException::withMessages([
+                'carreras' => 'Ingresá al menos una carrera.',
+            ]);
+        }
+
+        if ($names->count() > 10) {
+            throw ValidationException::withMessages([
+                'carreras' => 'Podés asociar hasta 10 carreras.',
+            ]);
+        }
+
+        if ($names->contains(fn (string $name): bool => Str::length($name) > 120)) {
+            throw ValidationException::withMessages([
+                'carreras' => 'Cada carrera puede tener hasta 120 caracteres.',
+            ]);
+        }
+
+        return $names->all();
+    }
+
+    private function user(): User
+    {
+        $user = Auth::user();
+        abort_unless($user instanceof User, 401);
+
+        return $user;
+    }
 }; ?>
 
 <section class="w-full">
@@ -106,6 +170,20 @@ new #[Title('Profile settings')] class extends Component {
                     </div>
                 @endif
             </div>
+
+            @if (auth()->user()->isProfessor())
+                <div>
+                    <flux:input
+                        wire:model="carreras"
+                        label="Carreras en las que dictás clases"
+                        placeholder="Ej.: Enfermería, Desarrollo de Software"
+                        required
+                    />
+                    <flux:text class="mt-2 text-sm">
+                        Separá varias carreras con comas. Esta información se mostrará en tus reservas.
+                    </flux:text>
+                </div>
+            @endif
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">

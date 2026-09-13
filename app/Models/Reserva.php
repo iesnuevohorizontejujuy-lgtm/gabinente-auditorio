@@ -18,8 +18,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $sala_id
  * @property int $profesor_id
  * @property string $titulo
- * @property string|null $descripcion
- * @property int $cantidad_asistentes
  * @property CarbonInterface $inicio
  * @property CarbonInterface $fin
  * @property ReservaEstado $estado
@@ -37,8 +35,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'sala_id',
     'profesor_id',
     'titulo',
-    'descripcion',
-    'cantidad_asistentes',
     'inicio',
     'fin',
     'estado',
@@ -102,7 +98,6 @@ class Reserva extends Model
     {
         return [
             'estado' => ReservaEstado::class,
-            'cantidad_asistentes' => 'integer',
             'inicio' => 'datetime',
             'fin' => 'datetime',
             'resuelta_at' => 'datetime',

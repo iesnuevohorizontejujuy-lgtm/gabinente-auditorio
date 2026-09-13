@@ -108,6 +108,10 @@
         @apply border-campus-700 bg-campus-700 text-white shadow-sm hover:border-campus-800 hover:bg-campus-800 hover:text-white dark:border-campus-500 dark:bg-campus-600 dark:text-white;
     }
 
+    .calendar-room-picker {
+        @apply flex w-full gap-2 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-900;
+    }
+
     .calendar-shell {
         @apply min-w-0;
     }
@@ -164,12 +168,62 @@
         @apply text-xs font-medium text-zinc-500 dark:text-zinc-400;
     }
 
+    .reservation-calendar .fc-timegrid-axis-cushion {
+        @apply px-2 text-xs font-semibold whitespace-nowrap text-zinc-500 dark:text-zinc-400;
+    }
+
     .reservation-calendar .fc-event {
         @apply rounded-md border-l-4 px-1 shadow-sm;
     }
 
     .reservation-calendar .fc-event-main {
         @apply p-1;
+    }
+
+    .calendar-event-content {
+        @apply flex min-w-0 flex-col gap-0.5 overflow-hidden leading-tight;
+    }
+
+    .calendar-event-time,
+    .calendar-event-title {
+        @apply truncate font-semibold;
+    }
+
+    .calendar-event-owner,
+    .calendar-event-careers {
+        @apply truncate text-[0.68rem] opacity-90;
+    }
+
+    .reservation-calendar .calendar-holiday-event {
+        background-color: var(--color-rose-50) !important;
+        border-color: var(--color-rose-200) !important;
+        border-left-color: var(--color-rose-600) !important;
+        color: var(--color-rose-900) !important;
+        @apply cursor-default border-l-[3px] shadow-none;
+    }
+
+    .reservation-calendar .calendar-holiday-event .fc-event-main {
+        color: inherit;
+    }
+
+    .calendar-holiday-content {
+        @apply grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1.5 px-1 py-0.5;
+    }
+
+    .calendar-holiday-marker {
+        @apply size-1.5 shrink-0 rounded-full bg-rose-600;
+    }
+
+    .calendar-holiday-title {
+        @apply line-clamp-2 min-w-0 text-[0.72rem] font-semibold leading-tight whitespace-normal;
+    }
+
+    .calendar-holiday-scope {
+        @apply rounded-full bg-rose-100 px-1.5 py-0.5 text-[0.58rem] font-bold tracking-wide text-rose-700 uppercase;
+    }
+
+    .reservation-calendar .calendar-event-actionable {
+        @apply cursor-pointer transition hover:brightness-95 hover:ring-2 hover:ring-white/70;
     }
 
     .reservation-calendar .fc-timegrid-now-indicator-line {
@@ -185,6 +239,21 @@
         --fc-neutral-bg-color: var(--color-zinc-800);
         --fc-page-bg-color: var(--color-zinc-900);
         --fc-today-bg-color: rgb(30 58 138 / 25%);
+    }
+
+    .dark .reservation-calendar .calendar-holiday-event {
+        background-color: rgb(76 5 25 / 65%) !important;
+        border-color: var(--color-rose-800) !important;
+        border-left-color: var(--color-rose-400) !important;
+        color: var(--color-rose-100) !important;
+    }
+
+    .dark .calendar-holiday-marker {
+        @apply bg-rose-400;
+    }
+
+    .dark .calendar-holiday-scope {
+        @apply bg-rose-900 text-rose-200;
     }
 
     .calendar-occupancy {

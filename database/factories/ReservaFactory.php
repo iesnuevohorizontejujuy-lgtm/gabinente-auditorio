@@ -27,8 +27,6 @@ class ReservaFactory extends Factory
             'sala_id' => Sala::factory(),
             'profesor_id' => User::factory(),
             'titulo' => fake()->sentence(4),
-            'descripcion' => fake()->optional()->sentence(),
-            'cantidad_asistentes' => fake()->numberBetween(1, 12),
             'inicio' => $inicio,
             'fin' => $inicio->copy()->addHour(),
             'estado' => ReservaEstado::Pendiente,
