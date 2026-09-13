@@ -3,54 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sala;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    private const SPACE_CARDS = [
-        'Gabinete de Informática' => [
-            'key' => 'gabinete',
-            'title' => 'Gabinete',
-            'description' => 'Reservá el gabinete para actividades, clases y reuniones de trabajo.',
-            'color' => '#2563eb',
-        ],
-        'Sala Auditorio' => [
-            'key' => 'auditorio',
-            'title' => 'Auditorio',
-            'description' => 'Organizá actos, charlas, presentaciones y encuentros institucionales.',
-            'color' => '#7c3aed',
-        ],
-        'Sala de Streaming' => [
-            'key' => 'streaming',
-            'title' => 'Sala de Streaming',
-            'description' => 'Programá transmisiones, grabaciones y producciones audiovisuales.',
-            'color' => '#0891b2',
-        ],
-    ];
+    private const SPACE_COLORS = ['#2563eb', '#7c3aed', '#0891b2', '#059669', '#d97706'];
 
     public function __invoke(): View
     {
-        $roomsByName = Sala::query()
+        $spaces = Sala::query()
             ->activas()
-            ->whereIn('nombre', array_keys(self::SPACE_CARDS))
+            ->select(['id', 'nombre', 'descripcion', 'capacidad', 'hora_inicio_operativo', 'hora_fin_operativo'])
+            ->with('imagenes:id,sala_id,ruta,orden')
+            ->orderBy('nombre')
             ->get()
-            ->keyBy('nombre');
+            ->values()
+            ->map(function (Sala $sala, int $index): array {
+                $primaryImage = $sala->imagenes->first();
 
-        $spaces = [];
-
-        foreach (self::SPACE_CARDS as $roomName => $card) {
-            $room = $roomsByName->get($roomName);
-
-            if ($room === null) {
-                continue;
-            }
-
-            $spaces[] = [
-                ...$card,
-                'id' => $room->id,
-                'capacity' => $room->capacidad,
-            ];
-        }
+                return [
+                    'id' => $sala->id,
+                    'title' => $sala->nombre,
+                    'description' => $sala->descripcion ?: 'Espacio institucional disponible para reservas.',
+                    'capacity' => $sala->capacidad,
+                    'operatingHours' => $sala->horarioOperativo(),
+                    'color' => self::SPACE_COLORS[$index % count(self::SPACE_COLORS)],
+                    'imageUrl' => $primaryImage === null
+                        ? null
+                        : Storage::disk('public')->url($primaryImage->ruta),
+                ];
+            });
 
         return view('dashboard', ['spaces' => $spaces]);
     }

@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->string('ubicacion')->nullable();
             $table->unsignedInteger('capacidad');
+            $table->time('hora_inicio_operativo')->default('08:00:00');
+            $table->time('hora_fin_operativo')->default('21:00:00');
+            $table->string('disponibilidad')->default('disponible');
             $table->boolean('activa')->default(true);
             $table->timestamps();
         });
